@@ -1,0 +1,15 @@
+fastapi
+uvicorn
+requests
+numpy
+pandas
+python-dotenv
+openai
+gspread
+oauth2client
+torch
+transformers
+sentence-transformers
+scikit-learn
+networkx
+tqdm

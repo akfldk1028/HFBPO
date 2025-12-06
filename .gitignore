@@ -1,0 +1,28 @@
+# API Keys & Secrets
+client_secret_*.json
+*.env
+.env
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+.venv/
+venv/
+
+# Bandit state (학습 데이터)
+rapo_bandit_state.json
+
+# IDE
+.idea/
+.vscode/
+*.swp
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Exclude YTB folder
+YTB/
+docs/DK/Image/화면 캡처 2025-11-28 115106.png
+docs

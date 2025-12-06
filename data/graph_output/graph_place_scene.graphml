@@ -1,0 +1,597 @@
+<?xml version='1.0' encoding='utf-8'?>
+<graphml xmlns="http://graphml.graphdrawing.org/xmlns" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://graphml.graphdrawing.org/xmlns http://graphml.graphdrawing.org/xmlns/1.0/graphml.xsd">
+  <graph edgedefault="undirected">
+    <node id="honeymoon suite" />
+    <node id="stunning" />
+    <node id="magical ambiance" />
+    <node id="lavish" />
+    <node id="whimsical" />
+    <node id="sunlit" />
+    <node id="enchanted" />
+    <node id="futuristic" />
+    <node id="dreamy" />
+    <node id="romantic" />
+    <node id="neon-lit castle skyline" />
+    <node id="mountain peak" />
+    <node id="breathtaking" />
+    <node id="awe" />
+    <node id="adventure" />
+    <node id="rugged terrain" />
+    <node id="waterfalls" />
+    <node id="lush green mountain" />
+    <node id="magical" />
+    <node id="adventurous" />
+    <node id="sprawling valley" />
+    <node id="mountain landscape" />
+    <node id="majestic" />
+    <node id="thrilling" />
+    <node id="sunset" />
+    <node id="city street" />
+    <node id="bustling" />
+    <node id="electric" />
+    <node id="alive" />
+    <node id="storefronts" />
+    <node id="lampposts" />
+    <node id="nostalgic" />
+    <node id="cobblestone paths" />
+    <node id="futuristic city" />
+    <node id="immersive" />
+    <node id="alleyways" />
+    <node id="skyscrapers" />
+    <node id="forest path" />
+    <node id="serene" />
+    <node id="enchanting" />
+    <node id="warm golden light" />
+    <node id="towering trees" />
+    <node id="trees" />
+    <node id="vibrant" />
+    <node id="ethereal mist" />
+    <node id="enchanted realm" />
+    <node id="bioluminescent trees" />
+    <node id="luxurious yacht" />
+    <node id="soft music" />
+    <node id="billowing sails" />
+    <node id="intricate details" />
+    <node id="azure waves" />
+    <node id="yacht" />
+    <node id="turquoise waves" />
+    <node id="green islands" />
+    <node id="ocean" />
+    <node id="dreamlike" />
+    <node id="cosmic panorama" />
+    <node id="ethereal" />
+    <node id="space" />
+    <node id="galaxy" />
+    <node id="planets" />
+    <node id="floating islands" />
+    <node id="futuristic spacecraft" />
+    <node id="luminous" />
+    <node id="sense of wonder" />
+    <node id="vast cosmic expanse" />
+    <node id="vibrant nebula" />
+    <node id="swirling galaxies" />
+    <node id="cozy cafe" />
+    <node id="relaxed" />
+    <node id="warm" />
+    <node id="park outside" />
+    <node id="busy city cafe" />
+    <node id="energetic" />
+    <node id="rooftop terrace" />
+    <node id="quiet corner of a cafe" />
+    <node id="introspective" />
+    <node id="calm" />
+    <node id="library coffee shop" />
+    <node id="cozy café" />
+    <node id="tranquil" />
+    <node id="living room" />
+    <node id="rainy street" />
+    <node id="melancholic" />
+    <node id="park bench" />
+    <node id="bookstore window" />
+    <node id="bedroom" />
+    <node id="amusement park entrance" />
+    <node id="excited" />
+    <node id="joyful" />
+    <node id="ferris wheel" />
+    <node id="arcade area" />
+    <node id="lively" />
+    <node id="playful" />
+    <node id="food court" />
+    <node id="roller coaster" />
+    <node id="carousel" />
+    <node id="Han River Park" />
+    <node id="Banpo Bridge" />
+    <node id="Namsan Tower" />
+    <node id="mystical" />
+    <node id="Yeouido Park" />
+    <node id="Seongsu Bridge" />
+    <node id="Mapo Hangang Park" />
+    <node id="Cherry Blossom Park" />
+    <node id="City Boulevard" />
+    <node id="Riverside Path" />
+    <node id="breezy" />
+    <node id="Historic District" />
+    <node id="University Campus" />
+    <node id="peaceful" />
+    <node id="Local Garden" />
+    <node id="Christmas market square" />
+    <node id="festive street" />
+    <node id="cozy wooden stalls" />
+    <node id="inviting" />
+    <node id="twinkling lights" />
+    <node id="ice skating rink" />
+    <node id="cheerful" />
+    <node id="holiday decorations" />
+    <node id="traditional ryokan room" />
+    <node id="authentic" />
+    <node id="serene garden" />
+    <node id="onsen bath" />
+    <node id="relaxing" />
+    <node id="koi pond" />
+    <node id="tatami mat dining area" />
+    <node id="cozy" />
+    <node id="shoji screen hallway" />
+    <node id="Times Square" />
+    <node id="Broadway" />
+    <node id="Times Square at night" />
+    <node id="entertaining" />
+    <node id="Street performer stage" />
+    <node id="Times Square with tourists" />
+    <node id="exciting" />
+    <node id="Digital billboards" />
+    <node id="Eiffel Tower" />
+    <node id="Trocadéro Gardens" />
+    <node id="Seine River" />
+    <node id="captivating" />
+    <node id="Pont Alexandre III" />
+    <node id="Montparnasse Tower" />
+    <node id="Champs de Mars" />
+    <node id="Hyeopjae Beach" />
+    <node id="Jungmun Saekdal Beach" />
+    <node id="Seogwipo Coast" />
+    <node id="Gwakji Beach" />
+    <node id="Sangumburi Crater" />
+    <node id="Woljeongri Beach" />
+    <node id="Arctic tundra" />
+    <node id="Igloo village" />
+    <node id="Frozen lake" />
+    <node id="Snow-covered forest" />
+    <node id="Mountaintop" />
+    <node id="otherworldly" />
+    <node id="Remote cabin" />
+    <node id="desert dunes" />
+    <node id="rocky outcrop" />
+    <node id="sunset horizon" />
+    <node id="dramatic" />
+    <node id="sandy plains" />
+    <node id="oasis" />
+    <node id="cacti field" />
+    <node id="dense rainforest" />
+    <node id="mysterious waterfall" />
+    <node id="lush jungle canopy" />
+    <node id="eerie" />
+    <node id="hidden cave" />
+    <node id="bamboo grove" />
+    <node id="exploratory" />
+    <node id="ancient ruins" />
+    <node id="Goseong Castle" />
+    <node id="mysterious" />
+    <node id="Surrounding Mountains" />
+    <node id="Historic Ruins" />
+    <node id="Scenic Overlook" />
+    <node id="Local Market" />
+    <node id="cultural" />
+    <node id="Traditional Village" />
+    <node id="subway station" />
+    <node id="busy" />
+    <node id="tense" />
+    <node id="train" />
+    <node id="platform" />
+    <node id="chaotic" />
+    <node id="urgent" />
+    <node id="commuter train" />
+    <node id="escalator" />
+    <node id="monotonous" />
+    <node id="reflective" />
+    <node id="subway car" />
+    <node id="festive atmosphere" />
+    <node id="warm sunset" />
+    <node id="city skyline" />
+    <node id="backyard patio" />
+    <node id="casual gathering" />
+    <node id="lively chatter" />
+    <node id="urban rooftop" />
+    <node id="garden rooftop" />
+    <node id="relaxed vibe" />
+    <node id="joyful laughter" />
+    <node id="balcony with plants" />
+    <node id="campsite" />
+    <node id="forest clearing" />
+    <node id="lake shore" />
+    <node id="mountain base" />
+    <node id="fire pit" />
+    <node id="tent area" />
+    <node id="aquarium tunnel" />
+    <node id="coral reef exhibit" />
+    <node id="tropical fish section" />
+    <node id="shark tank" />
+    <node id="jellyfish gallery" />
+    <node id="sea otter area" />
+    <node id="art gallery" />
+    <node id="inspiring" />
+    <node id="museum hall" />
+    <node id="installation room" />
+    <node id="dynamic" />
+    <node id="thought-provoking" />
+    <node id="exhibition space" />
+    <node id="sculpture garden" />
+    <node id="historic wing" />
+    <node id="stage" />
+    <node id="auditorium" />
+    <node id="outdoor field" />
+    <node id="festive" />
+    <node id="music festival" />
+    <node id="indoor arena" />
+    <node id="intimate" />
+    <node id="passionate" />
+    <node id="bar venue" />
+    <edge source="honeymoon suite" target="stunning" />
+    <edge source="honeymoon suite" target="magical ambiance" />
+    <edge source="honeymoon suite" target="lavish" />
+    <edge source="honeymoon suite" target="whimsical" />
+    <edge source="honeymoon suite" target="sunlit" />
+    <edge source="honeymoon suite" target="enchanted" />
+    <edge source="honeymoon suite" target="futuristic" />
+    <edge source="honeymoon suite" target="dreamy" />
+    <edge source="honeymoon suite" target="romantic" />
+    <edge source="whimsical" target="lush green mountain" />
+    <edge source="whimsical" target="sprawling valley" />
+    <edge source="whimsical" target="forest path" />
+    <edge source="whimsical" target="trees" />
+    <edge source="whimsical" target="yacht" />
+    <edge source="whimsical" target="turquoise waves" />
+    <edge source="whimsical" target="green islands" />
+    <edge source="whimsical" target="galaxy" />
+    <edge source="whimsical" target="planets" />
+    <edge source="whimsical" target="floating islands" />
+    <edge source="whimsical" target="aquarium tunnel" />
+    <edge source="whimsical" target="coral reef exhibit" />
+    <edge source="futuristic" target="neon-lit castle skyline" />
+    <edge source="futuristic" target="mountain landscape" />
+    <edge source="futuristic" target="sunset" />
+    <edge source="futuristic" target="ocean" />
+    <edge source="futuristic" target="skyscrapers" />
+    <edge source="dreamy" target="neon-lit castle skyline" />
+    <edge source="dreamy" target="forest path" />
+    <edge source="dreamy" target="trees" />
+    <edge source="dreamy" target="bookstore window" />
+    <edge source="dreamy" target="bedroom" />
+    <edge source="romantic" target="neon-lit castle skyline" />
+    <edge source="romantic" target="Han River Park" />
+    <edge source="romantic" target="Banpo Bridge" />
+    <edge source="romantic" target="Eiffel Tower" />
+    <edge source="romantic" target="Trocadéro Gardens" />
+    <edge source="romantic" target="aquarium tunnel" />
+    <edge source="romantic" target="coral reef exhibit" />
+    <edge source="mountain peak" target="breathtaking" />
+    <edge source="mountain peak" target="awe" />
+    <edge source="mountain peak" target="adventure" />
+    <edge source="breathtaking" target="rugged terrain" />
+    <edge source="breathtaking" target="waterfalls" />
+    <edge source="breathtaking" target="cosmic panorama" />
+    <edge source="breathtaking" target="space" />
+    <edge source="breathtaking" target="Montparnasse Tower" />
+    <edge source="breathtaking" target="Champs de Mars" />
+    <edge source="breathtaking" target="Hyeopjae Beach" />
+    <edge source="breathtaking" target="Jungmun Saekdal Beach" />
+    <edge source="breathtaking" target="Frozen lake" />
+    <edge source="breathtaking" target="Snow-covered forest" />
+    <edge source="breathtaking" target="oasis" />
+    <edge source="breathtaking" target="cacti field" />
+    <edge source="awe" target="rugged terrain" />
+    <edge source="awe" target="waterfalls" />
+    <edge source="adventure" target="rugged terrain" />
+    <edge source="adventure" target="waterfalls" />
+    <edge source="lush green mountain" target="magical" />
+    <edge source="lush green mountain" target="adventurous" />
+    <edge source="magical" target="sprawling valley" />
+    <edge source="magical" target="city street" />
+    <edge source="magical" target="cobblestone paths" />
+    <edge source="magical" target="Eiffel Tower" />
+    <edge source="magical" target="Trocadéro Gardens" />
+    <edge source="magical" target="Sangumburi Crater" />
+    <edge source="magical" target="Woljeongri Beach" />
+    <edge source="magical" target="Frozen lake" />
+    <edge source="magical" target="Snow-covered forest" />
+    <edge source="adventurous" target="sprawling valley" />
+    <edge source="adventurous" target="dense rainforest" />
+    <edge source="adventurous" target="mysterious waterfall" />
+    <edge source="adventurous" target="Historic Ruins" />
+    <edge source="adventurous" target="Scenic Overlook" />
+    <edge source="adventurous" target="fire pit" />
+    <edge source="adventurous" target="tent area" />
+    <edge source="adventurous" target="tropical fish section" />
+    <edge source="adventurous" target="shark tank" />
+    <edge source="mountain landscape" target="majestic" />
+    <edge source="mountain landscape" target="thrilling" />
+    <edge source="majestic" target="sunset" />
+    <edge source="majestic" target="cosmic panorama" />
+    <edge source="majestic" target="space" />
+    <edge source="majestic" target="sculpture garden" />
+    <edge source="majestic" target="historic wing" />
+    <edge source="thrilling" target="sunset" />
+    <edge source="thrilling" target="roller coaster" />
+    <edge source="thrilling" target="carousel" />
+    <edge source="thrilling" target="lush jungle canopy" />
+    <edge source="thrilling" target="hidden cave" />
+    <edge source="city street" target="bustling" />
+    <edge source="city street" target="electric" />
+    <edge source="city street" target="alive" />
+    <edge source="city street" target="nostalgic" />
+    <edge source="bustling" target="storefronts" />
+    <edge source="bustling" target="lampposts" />
+    <edge source="bustling" target="cobblestone paths" />
+    <edge source="bustling" target="futuristic city" />
+    <edge source="bustling" target="alleyways" />
+    <edge source="bustling" target="skyscrapers" />
+    <edge source="bustling" target="Times Square with tourists" />
+    <edge source="bustling" target="Digital billboards" />
+    <edge source="electric" target="storefronts" />
+    <edge source="electric" target="lampposts" />
+    <edge source="electric" target="futuristic city" />
+    <edge source="electric" target="alleyways" />
+    <edge source="electric" target="skyscrapers" />
+    <edge source="alive" target="storefronts" />
+    <edge source="alive" target="lampposts" />
+    <edge source="nostalgic" target="cobblestone paths" />
+    <edge source="nostalgic" target="cozy café" />
+    <edge source="nostalgic" target="living room" />
+    <edge source="nostalgic" target="roller coaster" />
+    <edge source="nostalgic" target="carousel" />
+    <edge source="nostalgic" target="Seongsu Bridge" />
+    <edge source="nostalgic" target="Mapo Hangang Park" />
+    <edge source="nostalgic" target="Riverside Path" />
+    <edge source="nostalgic" target="Historic District" />
+    <edge source="nostalgic" target="ice skating rink" />
+    <edge source="nostalgic" target="holiday decorations" />
+    <edge source="nostalgic" target="Historic Ruins" />
+    <edge source="nostalgic" target="Scenic Overlook" />
+    <edge source="futuristic city" target="immersive" />
+    <edge source="immersive" target="alleyways" />
+    <edge source="immersive" target="skyscrapers" />
+    <edge source="skyscrapers" target="serene" />
+    <edge source="skyscrapers" target="dreamlike" />
+    <edge source="forest path" target="serene" />
+    <edge source="forest path" target="enchanting" />
+    <edge source="forest path" target="warm golden light" />
+    <edge source="forest path" target="vibrant" />
+    <edge source="forest path" target="ethereal mist" />
+    <edge source="forest path" target="enchanted realm" />
+    <edge source="serene" target="towering trees" />
+    <edge source="serene" target="trees" />
+    <edge source="serene" target="yacht" />
+    <edge source="serene" target="turquoise waves" />
+    <edge source="serene" target="green islands" />
+    <edge source="serene" target="ocean" />
+    <edge source="serene" target="rainy street" />
+    <edge source="serene" target="park bench" />
+    <edge source="serene" target="Han River Park" />
+    <edge source="serene" target="Banpo Bridge" />
+    <edge source="serene" target="Cherry Blossom Park" />
+    <edge source="serene" target="City Boulevard" />
+    <edge source="serene" target="Montparnasse Tower" />
+    <edge source="serene" target="Champs de Mars" />
+    <edge source="serene" target="Hyeopjae Beach" />
+    <edge source="serene" target="Jungmun Saekdal Beach" />
+    <edge source="serene" target="Arctic tundra" />
+    <edge source="serene" target="Igloo village" />
+    <edge source="serene" target="sunset horizon" />
+    <edge source="serene" target="sandy plains" />
+    <edge source="serene" target="dense rainforest" />
+    <edge source="serene" target="mysterious waterfall" />
+    <edge source="serene" target="Goseong Castle" />
+    <edge source="serene" target="Surrounding Mountains" />
+    <edge source="serene" target="lake shore" />
+    <edge source="serene" target="mountain base" />
+    <edge source="serene" target="jellyfish gallery" />
+    <edge source="serene" target="sea otter area" />
+    <edge source="serene" target="art gallery" />
+    <edge source="serene" target="museum hall" />
+    <edge source="enchanting" target="towering trees" />
+    <edge source="warm golden light" target="towering trees" />
+    <edge source="vibrant" target="bioluminescent trees" />
+    <edge source="vibrant" target="yacht" />
+    <edge source="vibrant" target="turquoise waves" />
+    <edge source="vibrant" target="green islands" />
+    <edge source="vibrant" target="galaxy" />
+    <edge source="vibrant" target="planets" />
+    <edge source="vibrant" target="floating islands" />
+    <edge source="vibrant" target="busy city cafe" />
+    <edge source="vibrant" target="rooftop terrace" />
+    <edge source="vibrant" target="Namsan Tower" />
+    <edge source="vibrant" target="Yeouido Park" />
+    <edge source="vibrant" target="University Campus" />
+    <edge source="vibrant" target="Local Garden" />
+    <edge source="vibrant" target="Christmas market square" />
+    <edge source="vibrant" target="festive street" />
+    <edge source="vibrant" target="Times Square" />
+    <edge source="vibrant" target="Broadway" />
+    <edge source="vibrant" target="Seogwipo Coast" />
+    <edge source="vibrant" target="Gwakji Beach" />
+    <edge source="vibrant" target="Local Market" />
+    <edge source="vibrant" target="Traditional Village" />
+    <edge source="vibrant" target="outdoor field" />
+    <edge source="vibrant" target="music festival" />
+    <edge source="ethereal mist" target="bioluminescent trees" />
+    <edge source="enchanted realm" target="bioluminescent trees" />
+    <edge source="luxurious yacht" target="soft music" />
+    <edge source="luxurious yacht" target="billowing sails" />
+    <edge source="luxurious yacht" target="intricate details" />
+    <edge source="soft music" target="azure waves" />
+    <edge source="billowing sails" target="azure waves" />
+    <edge source="intricate details" target="azure waves" />
+    <edge source="ocean" target="dreamlike" />
+    <edge source="cosmic panorama" target="ethereal" />
+    <edge source="ethereal" target="space" />
+    <edge source="ethereal" target="galaxy" />
+    <edge source="ethereal" target="planets" />
+    <edge source="ethereal" target="floating islands" />
+    <edge source="futuristic spacecraft" target="luminous" />
+    <edge source="futuristic spacecraft" target="sense of wonder" />
+    <edge source="futuristic spacecraft" target="vast cosmic expanse" />
+    <edge source="luminous" target="vibrant nebula" />
+    <edge source="luminous" target="swirling galaxies" />
+    <edge source="sense of wonder" target="vibrant nebula" />
+    <edge source="sense of wonder" target="swirling galaxies" />
+    <edge source="vast cosmic expanse" target="vibrant nebula" />
+    <edge source="vast cosmic expanse" target="swirling galaxies" />
+    <edge source="cozy cafe" target="relaxed" />
+    <edge source="cozy cafe" target="warm" />
+    <edge source="relaxed" target="park outside" />
+    <edge source="warm" target="park outside" />
+    <edge source="warm" target="cozy wooden stalls" />
+    <edge source="warm" target="twinkling lights" />
+    <edge source="warm" target="oasis" />
+    <edge source="warm" target="cacti field" />
+    <edge source="busy city cafe" target="energetic" />
+    <edge source="energetic" target="rooftop terrace" />
+    <edge source="energetic" target="Seongsu Bridge" />
+    <edge source="energetic" target="Mapo Hangang Park" />
+    <edge source="energetic" target="Times Square" />
+    <edge source="energetic" target="Broadway" />
+    <edge source="energetic" target="stage" />
+    <edge source="energetic" target="auditorium" />
+    <edge source="rooftop terrace" target="festive atmosphere" />
+    <edge source="rooftop terrace" target="warm sunset" />
+    <edge source="quiet corner of a cafe" target="introspective" />
+    <edge source="quiet corner of a cafe" target="calm" />
+    <edge source="introspective" target="library coffee shop" />
+    <edge source="introspective" target="bookstore window" />
+    <edge source="introspective" target="bedroom" />
+    <edge source="calm" target="library coffee shop" />
+    <edge source="cozy café" target="tranquil" />
+    <edge source="tranquil" target="living room" />
+    <edge source="tranquil" target="traditional ryokan room" />
+    <edge source="tranquil" target="serene garden" />
+    <edge source="tranquil" target="Seine River" />
+    <edge source="tranquil" target="Pont Alexandre III" />
+    <edge source="tranquil" target="Mountaintop" />
+    <edge source="tranquil" target="Remote cabin" />
+    <edge source="tranquil" target="desert dunes" />
+    <edge source="tranquil" target="rocky outcrop" />
+    <edge source="tranquil" target="campsite" />
+    <edge source="tranquil" target="forest clearing" />
+    <edge source="tranquil" target="sculpture garden" />
+    <edge source="tranquil" target="historic wing" />
+    <edge source="rainy street" target="melancholic" />
+    <edge source="melancholic" target="park bench" />
+    <edge source="amusement park entrance" target="excited" />
+    <edge source="amusement park entrance" target="joyful" />
+    <edge source="excited" target="ferris wheel" />
+    <edge source="joyful" target="ferris wheel" />
+    <edge source="joyful" target="Cherry Blossom Park" />
+    <edge source="joyful" target="City Boulevard" />
+    <edge source="joyful" target="Christmas market square" />
+    <edge source="joyful" target="festive street" />
+    <edge source="arcade area" target="lively" />
+    <edge source="arcade area" target="playful" />
+    <edge source="lively" target="food court" />
+    <edge source="lively" target="Times Square at night" />
+    <edge source="lively" target="Street performer stage" />
+    <edge source="playful" target="food court" />
+    <edge source="playful" target="jellyfish gallery" />
+    <edge source="playful" target="sea otter area" />
+    <edge source="Namsan Tower" target="mystical" />
+    <edge source="mystical" target="Yeouido Park" />
+    <edge source="mystical" target="Arctic tundra" />
+    <edge source="mystical" target="Igloo village" />
+    <edge source="mystical" target="desert dunes" />
+    <edge source="mystical" target="rocky outcrop" />
+    <edge source="mystical" target="bamboo grove" />
+    <edge source="mystical" target="ancient ruins" />
+    <edge source="Riverside Path" target="breezy" />
+    <edge source="breezy" target="Historic District" />
+    <edge source="University Campus" target="peaceful" />
+    <edge source="peaceful" target="Local Garden" />
+    <edge source="peaceful" target="onsen bath" />
+    <edge source="peaceful" target="koi pond" />
+    <edge source="peaceful" target="Sangumburi Crater" />
+    <edge source="peaceful" target="Woljeongri Beach" />
+    <edge source="cozy wooden stalls" target="inviting" />
+    <edge source="inviting" target="twinkling lights" />
+    <edge source="inviting" target="tatami mat dining area" />
+    <edge source="inviting" target="shoji screen hallway" />
+    <edge source="ice skating rink" target="cheerful" />
+    <edge source="cheerful" target="holiday decorations" />
+    <edge source="traditional ryokan room" target="authentic" />
+    <edge source="authentic" target="serene garden" />
+    <edge source="onsen bath" target="relaxing" />
+    <edge source="relaxing" target="koi pond" />
+    <edge source="relaxing" target="Seogwipo Coast" />
+    <edge source="relaxing" target="Gwakji Beach" />
+    <edge source="tatami mat dining area" target="cozy" />
+    <edge source="cozy" target="shoji screen hallway" />
+    <edge source="cozy" target="fire pit" />
+    <edge source="cozy" target="tent area" />
+    <edge source="Times Square at night" target="entertaining" />
+    <edge source="entertaining" target="Street performer stage" />
+    <edge source="Times Square with tourists" target="exciting" />
+    <edge source="exciting" target="Digital billboards" />
+    <edge source="exciting" target="tropical fish section" />
+    <edge source="exciting" target="shark tank" />
+    <edge source="exciting" target="stage" />
+    <edge source="exciting" target="auditorium" />
+    <edge source="Seine River" target="captivating" />
+    <edge source="captivating" target="Pont Alexandre III" />
+    <edge source="Mountaintop" target="otherworldly" />
+    <edge source="otherworldly" target="Remote cabin" />
+    <edge source="sunset horizon" target="dramatic" />
+    <edge source="dramatic" target="sandy plains" />
+    <edge source="lush jungle canopy" target="eerie" />
+    <edge source="eerie" target="hidden cave" />
+    <edge source="eerie" target="lake shore" />
+    <edge source="eerie" target="mountain base" />
+    <edge source="bamboo grove" target="exploratory" />
+    <edge source="exploratory" target="ancient ruins" />
+    <edge source="Goseong Castle" target="mysterious" />
+    <edge source="mysterious" target="Surrounding Mountains" />
+    <edge source="mysterious" target="campsite" />
+    <edge source="mysterious" target="forest clearing" />
+    <edge source="Local Market" target="cultural" />
+    <edge source="cultural" target="Traditional Village" />
+    <edge source="subway station" target="busy" />
+    <edge source="subway station" target="tense" />
+    <edge source="busy" target="train" />
+    <edge source="tense" target="train" />
+    <edge source="platform" target="chaotic" />
+    <edge source="platform" target="urgent" />
+    <edge source="chaotic" target="commuter train" />
+    <edge source="urgent" target="commuter train" />
+    <edge source="escalator" target="monotonous" />
+    <edge source="escalator" target="reflective" />
+    <edge source="monotonous" target="subway car" />
+    <edge source="reflective" target="subway car" />
+    <edge source="festive atmosphere" target="city skyline" />
+    <edge source="warm sunset" target="city skyline" />
+    <edge source="backyard patio" target="casual gathering" />
+    <edge source="backyard patio" target="lively chatter" />
+    <edge source="casual gathering" target="urban rooftop" />
+    <edge source="lively chatter" target="urban rooftop" />
+    <edge source="garden rooftop" target="relaxed vibe" />
+    <edge source="garden rooftop" target="joyful laughter" />
+    <edge source="relaxed vibe" target="balcony with plants" />
+    <edge source="joyful laughter" target="balcony with plants" />
+    <edge source="art gallery" target="inspiring" />
+    <edge source="inspiring" target="museum hall" />
+    <edge source="installation room" target="dynamic" />
+    <edge source="installation room" target="thought-provoking" />
+    <edge source="dynamic" target="exhibition space" />
+    <edge source="thought-provoking" target="exhibition space" />
+    <edge source="outdoor field" target="festive" />
+    <edge source="festive" target="music festival" />
+    <edge source="indoor arena" target="intimate" />
+    <edge source="indoor arena" target="passionate" />
+    <edge source="intimate" target="bar venue" />
+    <edge source="passionate" target="bar venue" />
+  </graph>
+</graphml>

@@ -1,0 +1,8 @@
+{
+  "valid_sentences": 78,
+  "num_places": 153,
+  "num_verbs": 62,
+  "num_scenarios": 81,
+  "num_place_verb_edges": 333,
+  "num_place_scene_edges": 358
+}

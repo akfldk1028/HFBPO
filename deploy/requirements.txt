@@ -1,0 +1,11 @@
+fastapi
+uvicorn[standard]
+requests
+numpy
+pandas
+python-dotenv
+openai
+networkx
+pydantic
+gspread
+google-auth

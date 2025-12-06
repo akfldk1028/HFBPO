@@ -1,0 +1,4 @@
+Input,verb_obj_word,scenario_word,place
+"A cat sitting on a mat", "['sitting']", "['mat']", "['home']"
+"A dog running in the park", "['running']", "['park']", "['outdoors']"
+"A bird flying in the sky", "['flying']", "['sky']", "['nature']"
