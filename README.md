@@ -45,7 +45,21 @@ Repeat → Progressively learn better prompts
 
 ![HFBPO Workflow](workflow.png)
 
-*Figure: RAPO-based candidate generation, Multi-Armed Bandit (Thompson Sampling), n8n workflow, YouTube Analytics feedback loop*
+*Figure 1: RAPO-based candidate generation, Multi-Armed Bandit (Thompson Sampling), n8n workflow, YouTube Analytics feedback loop*
+
+### Offline & Online Pipeline
+
+![Pipeline Details](example1.png)
+
+*Figure 2: Detailed offline (graph embedding construction) and online (MAB selection) pipeline*
+
+**Offline Phase:**
+- Setup topics → Expand with GPT → Extract modifiers (place, verb, scenario)
+- Build graph embeddings for co-occurrence relationships
+
+**Online Phase:**
+- Input topic → Embed → Retrieve top-k places → Extract graph neighbors
+- Build K prompt candidates → Thompson Sampling → GPT Rewriting → Post to n8n
 
 ## Quick Start
 
