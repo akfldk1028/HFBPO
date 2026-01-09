@@ -17,9 +17,19 @@ from src.api.google_sheets_client import GoogleSheetsClient
 from src.api.analytics_client import AnalyticsClient
 from src.core.reward_calculator import RewardCalculator
 
+# CatProject Router (고양이 커플 숏츠 전용)
+from HFBPO_Cat_Project.endpoint import cat_router
+
 load_dotenv("YTB/.env")
 
-app = FastAPI(title="HFBPO API", description="Human Feedback Bandit Prompt Optimization (Fixed Topic)")
+app = FastAPI(
+    title="HFBPO API",
+    description="Human Feedback Bandit Prompt Optimization + CatProject",
+    version="1.1.0"
+)
+
+# CatProject Router 등록 (/cat/* 엔드포인트)
+app.include_router(cat_router)
 
 # 컴포넌트 초기화 (서버 시작 시 고정 토픽으로 ARM 생성)
 generator = RapoGenerator(
@@ -66,15 +76,31 @@ class RewardResponse(BaseModel):
 def root():
     return {
         "service": "HFBPO",
-        "description": "Human Feedback Bandit Prompt Optimization (Fixed Topic)",
-        "fixed_topic": generator.fixed_topic,
-        "fixed_arm_count": len(generator.fixed_candidates),
-        "endpoints": {
-            "/generate": "POST - 고정 ARM에서 프롬프트 생성",
-            "/reward": "POST - 성과 보상 피드백 (수동)",
-            "/update-policy": "POST - YouTube Analytics 기반 자동 피드백 루프",
-            "/arms": "GET - 고정된 ARM 목록",
-            "/stats": "GET - 밴딧 통계"
+        "version": "1.1.0",
+        "description": "Human Feedback Bandit Prompt Optimization",
+        "projects": {
+            "hfbpo": {
+                "description": "일반 숏츠 (place|verb|scenario)",
+                "fixed_topic": generator.fixed_topic,
+                "arm_count": len(generator.fixed_candidates),
+                "endpoints": {
+                    "POST /generate": "프롬프트 생성",
+                    "POST /reward": "보상 업데이트",
+                    "GET /stats": "통계"
+                }
+            },
+            "cat_project": {
+                "description": "고양이 커플 숏츠 (hook|conflict|ending)",
+                "endpoints": {
+                    "GET /cat/select": "조합 선택 (Thompson Sampling)",
+                    "GET /cat/select-and-generate": "조합 선택 + 에피소드 생성",
+                    "POST /cat/generate": "지정 조합으로 에피소드 생성",
+                    "POST /cat/update": "보상 업데이트",
+                    "POST /cat/update-multi-horizon": "다중 시점 보상 (6h/24h/72h)",
+                    "GET /cat/stats": "학습 통계",
+                    "GET /cat/top/{n}": "상위 N개 조합"
+                }
+            }
         }
     }
 

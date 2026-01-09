@@ -2,6 +2,7 @@
 client_secret_*.json
 *.env
 .env
+GOOGLE_SHEETS_CREDENTIALS.json
 
 # Python
 __pycache__/
@@ -9,22 +10,33 @@ __pycache__/
 *.pyo
 .venv/
 venv/
+*.egg-info/
 
-# Bandit state (학습 데이터)
+# Bandit state (학습 데이터 - 서버에서 동적 생성)
 rapo_bandit_state.json
+HFBPO_Cat_Project/data/bandit_state.json
+**/bandit_state.json
+**/combinations.json
 
 # IDE
 .idea/
 .vscode/
 *.swp
+*.sublime-*
 
 # OS
 .DS_Store
 Thumbs.db
 
-# Exclude YTB folder
-YTB/
-docs/DK/Image/화면 캡처 2025-11-28 115106.png
-docs
+# Logs
+*.log
+logs/
 
+# Exclude
+YTB/
+docs/DK/Image/
 ./deploy-gcp.sh
+
+# Test outputs
+test_output/
+*.tmp

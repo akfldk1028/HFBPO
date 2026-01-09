@@ -26,14 +26,17 @@ from src.api.google_sheets_client import GoogleSheetsClient
 from src.api.analytics_client import AnalyticsClient
 from src.core.reward_calculator import RewardCalculator
 
+# CatProject Router
+from HFBPO_Cat_Project.endpoint import cat_router
+
 # .env 로드
 load_dotenv(project_root / ".env")
 load_dotenv("/mnt/d/Data/00_Personal/YTB/short-video-maker/.env")  # fallback
 
 app = FastAPI(
     title="HFBPO API",
-    description="Human Feedback Bandit Prompt Optimization",
-    version="1.0.0"
+    description="Human Feedback Bandit Prompt Optimization + CatProject",
+    version="1.1.0"
 )
 
 # CORS 설정
@@ -44,6 +47,9 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
+
+# CatProject Router 등록 (/cat/* 엔드포인트)
+app.include_router(cat_router)
 
 # Generator 초기화 (서버 시작 시 한 번만)
 generator: Optional[RapoGenerator] = None
@@ -157,14 +163,31 @@ def root():
     return {
         "service": "HFBPO",
         "version": "1.1.0",
-        "description": "Human Feedback Bandit Prompt Optimization",
-        "endpoints": {
-            "POST /generate": "토픽 → 프롬프트 생성",
-            "POST /reward": "단일 보상 업데이트",
-            "POST /batch-reward": "다중 보상 업데이트",
-            "POST /calculate-reward": "Analytics → reward 변환",
-            "POST /update-policy": "Google Sheets + Analytics 자동 피드백 루프",
-            "GET /stats": "상위 조합 통계"
+        "description": "Human Feedback Bandit Prompt Optimization + CatProject",
+        "projects": {
+            "hfbpo": {
+                "description": "일반 숏츠 (place|verb|scenario)",
+                "endpoints": {
+                    "POST /generate": "토픽 → 프롬프트 생성",
+                    "POST /reward": "단일 보상 업데이트",
+                    "POST /batch-reward": "다중 보상 업데이트",
+                    "POST /calculate-reward": "Analytics → reward 변환",
+                    "POST /update-policy": "Google Sheets + Analytics 자동 피드백 루프",
+                    "GET /stats": "상위 조합 통계"
+                }
+            },
+            "cat_project": {
+                "description": "고양이 커플 숏츠 (hook|conflict|ending)",
+                "endpoints": {
+                    "GET /cat/select": "조합 선택 (Thompson Sampling)",
+                    "GET /cat/select-and-generate": "조합 선택 + 에피소드 생성",
+                    "POST /cat/generate": "지정 조합으로 에피소드 생성",
+                    "POST /cat/update": "보상 업데이트",
+                    "POST /cat/update-multi-horizon": "다중 시점 보상 (6h/24h/72h)",
+                    "GET /cat/stats": "학습 통계",
+                    "GET /cat/top/{n}": "상위 N개 조합"
+                }
+            }
         }
     }
 

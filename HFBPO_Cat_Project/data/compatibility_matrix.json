@@ -1,0 +1,124 @@
+{
+  "description": "조합 호환성 매트릭스 - 어색한 조합 사전 필터링용",
+  "scoring": {
+    "good": 1.0,
+    "neutral": 0.7,
+    "awkward": 0.3
+  },
+  "hook_conflict_compatibility": {
+    "shock_reveal": {
+      "kami_forgets": "good",
+      "dalgi_revenge": "good",
+      "couple_battle": "good",
+      "prank_backfire": "good",
+      "jealousy_spiral": "good",
+      "misunderstanding": "good"
+    },
+    "curiosity_gap": {
+      "kami_forgets": "good",
+      "dalgi_revenge": "neutral",
+      "couple_battle": "neutral",
+      "prank_backfire": "good",
+      "jealousy_spiral": "good",
+      "misunderstanding": "good"
+    },
+    "action_mid": {
+      "kami_forgets": "awkward",
+      "dalgi_revenge": "good",
+      "couple_battle": "good",
+      "prank_backfire": "neutral",
+      "jealousy_spiral": "awkward",
+      "misunderstanding": "awkward"
+    },
+    "cute_trap": {
+      "kami_forgets": "good",
+      "dalgi_revenge": "awkward",
+      "couple_battle": "awkward",
+      "prank_backfire": "good",
+      "jealousy_spiral": "good",
+      "misunderstanding": "good"
+    },
+    "dramatic_zoom": {
+      "kami_forgets": "good",
+      "dalgi_revenge": "good",
+      "couple_battle": "good",
+      "prank_backfire": "good",
+      "jealousy_spiral": "good",
+      "misunderstanding": "good"
+    }
+  },
+  "conflict_ending_compatibility": {
+    "kami_forgets": {
+      "both_dumb": "good",
+      "twist_win": "good",
+      "wholesome": "good",
+      "chaos_loop": "neutral",
+      "revenge_sweet": "awkward",
+      "cliffhanger": "neutral"
+    },
+    "dalgi_revenge": {
+      "both_dumb": "neutral",
+      "twist_win": "good",
+      "wholesome": "neutral",
+      "chaos_loop": "good",
+      "revenge_sweet": "good",
+      "cliffhanger": "good"
+    },
+    "couple_battle": {
+      "both_dumb": "good",
+      "twist_win": "good",
+      "wholesome": "good",
+      "chaos_loop": "good",
+      "revenge_sweet": "neutral",
+      "cliffhanger": "good"
+    },
+    "prank_backfire": {
+      "both_dumb": "good",
+      "twist_win": "good",
+      "wholesome": "neutral",
+      "chaos_loop": "good",
+      "revenge_sweet": "good",
+      "cliffhanger": "neutral"
+    },
+    "jealousy_spiral": {
+      "both_dumb": "neutral",
+      "twist_win": "good",
+      "wholesome": "good",
+      "chaos_loop": "neutral",
+      "revenge_sweet": "neutral",
+      "cliffhanger": "good"
+    },
+    "misunderstanding": {
+      "both_dumb": "good",
+      "twist_win": "good",
+      "wholesome": "good",
+      "chaos_loop": "neutral",
+      "revenge_sweet": "awkward",
+      "cliffhanger": "good"
+    }
+  },
+  "blacklist_combinations": [
+    "action_mid|kami_forgets|wholesome",
+    "action_mid|misunderstanding|both_dumb",
+    "cute_trap|dalgi_revenge|revenge_sweet",
+    "cute_trap|couple_battle|chaos_loop"
+  ],
+  "golden_combinations": [
+    {
+      "key": "shock_reveal|kami_forgets|both_dumb",
+      "reason": "충격 표정 → 깜빡함 → 둘 다 바보 = 높은 공감 + 웃음"
+    },
+    {
+      "key": "curiosity_gap|prank_backfire|twist_win",
+      "reason": "궁금증 → 장난 역풍 → 반전 = 재시청 유도"
+    },
+    {
+      "key": "cute_trap|jealousy_spiral|wholesome",
+      "reason": "귀여움 → 질투 → 화해 = 공유율 증가"
+    },
+    {
+      "key": "dramatic_zoom|couple_battle|chaos_loop",
+      "reason": "드라마틱 → 대결 → 혼돈 = 루프 재생"
+    }
+  ]
+}

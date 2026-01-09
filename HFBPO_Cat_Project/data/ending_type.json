@@ -1,0 +1,68 @@
+{
+  "name": "ending_type",
+  "description": "결말 트리거 - Rewatchability + Share 향상 목표",
+  "modifiers": {
+    "both_dumb": {
+      "idx": 0,
+      "name_ko": "둘 다 바보",
+      "description": "둘 다 바보같은 상황이 됨",
+      "mood": "코미디",
+      "expected_effect": "공감 + 웃음",
+      "final_emotion": "both confused/embarrassed",
+      "loop_potential": "medium",
+      "prior": {"alpha": 2, "beta": 1}
+    },
+    "twist_win": {
+      "idx": 1,
+      "name_ko": "반전 승리",
+      "description": "예상 못한 반전으로 끝남",
+      "mood": "서프라이즈",
+      "expected_effect": "재시청",
+      "final_emotion": "unexpected winner revealed",
+      "loop_potential": "high",
+      "prior": {"alpha": 2, "beta": 1}
+    },
+    "wholesome": {
+      "idx": 2,
+      "name_ko": "따뜻한 화해",
+      "description": "따뜻하게 화해하며 끝남",
+      "mood": "감동",
+      "expected_effect": "공유",
+      "final_emotion": "warm embrace, forgiveness",
+      "loop_potential": "low",
+      "prior": {"alpha": 2, "beta": 1}
+    },
+    "chaos_loop": {
+      "idx": 3,
+      "name_ko": "혼돈 반복",
+      "description": "혼돈이 반복되며 끝남 (무한 루프 느낌)",
+      "mood": "카오스",
+      "expected_effect": "루프 재생",
+      "final_emotion": "chaos continues, no resolution",
+      "loop_potential": "very high",
+      "prior": {"alpha": 1, "beta": 1}
+    },
+    "revenge_sweet": {
+      "idx": 4,
+      "name_ko": "복수 성공",
+      "description": "복수가 성공적으로 끝남",
+      "mood": "카타르시스",
+      "expected_effect": "만족감",
+      "final_emotion": "satisfying payback",
+      "loop_potential": "medium",
+      "prior": {"alpha": 1, "beta": 1}
+    },
+    "cliffhanger": {
+      "idx": 5,
+      "name_ko": "다음에 계속",
+      "description": "다음 에피소드 궁금하게 끝남",
+      "mood": "궁금",
+      "expected_effect": "구독 유도",
+      "final_emotion": "suspense, unresolved",
+      "loop_potential": "low",
+      "warning": "단편 Shorts에는 부적합할 수 있음 - 시리즈 전용 권장",
+      "prior": {"alpha": 1, "beta": 2}
+    }
+  },
+  "total_count": 6
+}

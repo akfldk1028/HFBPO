@@ -1,0 +1,875 @@
+{
+  "name": "PLEASE251020",
+  "nodes": [
+    {
+      "parameters": {
+        "content": "## | INPUT: Starting Idea Section",
+        "height": 588,
+        "width": 1096,
+        "color": 7
+      },
+      "id": "1f97f3df-e39f-45fa-959a-d393661e0f00",
+      "name": "Sticky Note14",
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        32,
+        1296
+      ],
+      "typeVersion": 1
+    },
+    {
+      "parameters": {},
+      "id": "c8075143-5502-4e53-84e5-0839b2f3dc8f",
+      "name": "Tool: Inject Creative Perspective (Idea)",
+      "type": "@n8n/n8n-nodes-langchain.toolThink",
+      "position": [
+        480,
+        1584
+      ],
+      "typeVersion": 1
+    },
+    {
+      "parameters": {
+        "schemaType": "manual",
+        "inputSchema": "{\n  \"type\": \"object\",\n  \"properties\": {\n    \"format_type\": {\n      \"type\": \"string\",\n      \"enum\": [\"timeline\", \"storyboard\"],\n      \"description\": \"The format of the video content\"\n    },\n    \"topic_category\": {\n      \"type\": \"string\",\n      \"description\": \"The category of the content\"\n    },\n    \"target_language\": {\n      \"type\": \"string\",\n      \"enum\": [\"korean\", \"english\", \"japanese\", \"chinese\", \"spanish\"],\n      \"description\": \"The target language for the content\"\n    },\n    \"time_context\": {\n      \"type\": \"string\",\n      \"enum\": [\"morning\", \"afternoon\", \"evening\", \"night\"],\n      \"description\": \"The time context for the content\"\n    },\n    \"timeline\": {\n      \"type\": \"object\",\n      \"description\": \"Timeline format scenes (ONLY include if format_type is 'timeline')\",\n      \"properties\": {\n        \"scenes\": {\n          \"type\": \"array\",\n          \"description\": \"Array of timeline scenes\",\n          \"items\": {\n            \"type\": \"object\",\n            \"properties\": {\n              \"id\": {\n                \"type\": \"string\",\n                \"description\": \"Unique scene identifier like 'scene_1'\"\n              },\n              \"duration\": {\n                \"type\": \"number\",\n                \"description\": \"Duration in seconds\"\n              },\n              \"text\": {\n                \"type\": \"string\",\n                \"description\": \"Rich narration with visual description and VEO3 prompt\"\n              },\n              \"search_keywords\": {\n                \"type\": \"array\",\n                \"description\": \"English keywords for Pexels search\",\n                \"items\": {\n                  \"type\": \"string\"\n                },\n                \"minItems\": 2\n              },\n              \"visual_style\": {\n                \"type\": \"string\",\n                \"description\": \"Complete cinematography description\"\n              },\n              \"mood\": {\n                \"type\": \"string\",\n                \"description\": \"Lighting and emotional tone\"\n              },\n              \"image_prompt\": {\n                \"type\": \"string\",\n                \"description\": \"Complete VEO3 image generation prompt\"\n              }\n            },\n            \"required\": [\n              \"id\",\n              \"duration\",\n              \"text\",\n              \"search_keywords\",\n              \"visual_style\",\n              \"mood\",\n              \"image_prompt\"\n            ]\n          }\n        }\n      },\n      \"required\": [\"scenes\"]\n    },\n    \"storyboard\": {\n      \"type\": \"array\",\n      \"description\": \"Storyboard format shots (ONLY include if format_type is 'storyboard')\",\n      \"items\": {\n        \"type\": \"object\",\n        \"properties\": {\n          \"shot\": {\n            \"type\": \"number\",\n            \"description\": \"Shot number starting from 1\"\n          },\n          \"duration\": {\n            \"type\": \"number\",\n            \"description\": \"Duration in seconds\"\n          },\n          \"audio\": {\n            \"type\": \"object\",\n            \"properties\": {\n              \"narration\": {\n                \"type\": \"string\",\n                \"description\": \"Detailed narration with emotional markers\"\n              }\n            },\n            \"required\": [\"narration\"]\n          },\n          \"search_keywords\": {\n            \"type\": \"array\",\n            \"description\": \"English keywords for Pexels search\",\n            \"items\": {\n              \"type\": \"string\"\n            },\n            \"minItems\": 2,\n            \"maxItems\": 5\n          },\n          \"visual_style\": {\n            \"type\": \"string\",\n            \"description\": \"Complete cinematography description\"\n          },\n          \"mood\": {\n            \"type\": \"string\",\n            \"description\": \"Lighting and emotional tone\"\n          },\n          \"image_prompt\": {\n            \"type\": \"string\",\n            \"description\": \"Complete VEO3 image generation prompt\"\n          }\n        },\n        \"required\": [\n          \"shot\",\n          \"duration\",\n          \"audio\",\n          \"search_keywords\",\n          \"visual_style\",\n          \"mood\",\n          \"image_prompt\"\n        ]\n      }\n    },\n    \"title\": {\n      \"type\": \"string\",\n      \"description\": \"Engaging video title\"\n    },\n    \"category\": {\n      \"type\": \"string\",\n      \"description\": \"Content category\"\n    },\n    \"language\": {\n      \"type\": \"string\",\n      \"description\": \"Content language\"\n    },\n    \"viral_potential\": {\n      \"type\": \"number\",\n      \"description\": \"Viral potential score from 1-10\",\n      \"minimum\": 1,\n      \"maximum\": 10\n    },\n    \"video_config\": {\n      \"type\": \"object\",\n      \"description\": \"Video configuration settings\",\n      \"properties\": {\n        \"orientation\": {\n          \"type\": \"string\",\n          \"enum\": [\"portrait\", \"landscape\"],\n          \"description\": \"Video orientation\"\n        },\n        \"musicVolume\": {\n          \"type\": \"string\",\n          \"enum\": [\"low\", \"medium\", \"high\"],\n          \"description\": \"Background music volume\"\n        },\n        \"subtitlePosition\": {\n          \"type\": \"string\",\n          \"enum\": [\"top\", \"center\", \"bottom\"],\n          \"description\": \"Subtitle position\"\n        },\n        \"quality\": {\n          \"type\": \"string\",\n          \"enum\": [\"standard\", \"high\", \"premium\"],\n          \"description\": \"Video quality\"\n        }\n      },\n      \"required\": [\"orientation\"]\n    },\n    \"elevenlabs_config\": {\n      \"type\": \"object\",\n      \"description\": \"ElevenLabs TTS configuration\",\n      \"properties\": {\n        \"model_id\": {\n          \"type\": \"string\",\n          \"enum\": [\n            \"eleven_multilingual_v2\",\n            \"eleven_flash_v2_5\",\n            \"eleven_turbo_v2_5\"\n          ],\n          \"description\": \"TTS model to use\"\n        },\n        \"voice_settings\": {\n          \"type\": \"object\",\n          \"properties\": {\n            \"stability\": {\n              \"type\": \"number\",\n              \"minimum\": 0,\n              \"maximum\": 1,\n              \"description\": \"Voice stability\"\n            },\n            \"similarity_boost\": {\n              \"type\": \"number\",\n              \"minimum\": 0,\n              \"maximum\": 1,\n              \"description\": \"Voice similarity boost\"\n            },\n            \"speed\": {\n              \"type\": \"number\",\n              \"minimum\": 0.5,\n              \"maximum\": 2.0,\n              \"description\": \"Speech speed\"\n            },\n            \"style\": {\n              \"type\": \"string\",\n              \"enum\": [\"default\", \"narration\", \"chat\"],\n              \"description\": \"Speaking style\"\n            }\n          }\n        },\n        \"output_format\": {\n          \"type\": \"string\",\n          \"enum\": [\"mp3\", \"pcm\", \"opus\"],\n          \"description\": \"Audio output format\"\n        }\n      }\n    },\n    \"youtube_upload\": {\n      \"type\": \"object\",\n      \"description\": \"YouTube upload configuration\",\n      \"properties\": {\n        \"enabled\": {\n          \"type\": \"boolean\",\n          \"description\": \"Whether to upload this video to YouTube\"\n        },\n        \"channelName\": {\n          \"type\": \"string\",\n          \"description\": \"Target YouTube channel name\"\n        },\n        \"title\": {\n          \"type\": \"string\",\n          \"description\": \"YouTube video title (use \\\"{{auto}}\\\" to auto-generate)\"\n        },\n        \"description\": {\n          \"type\": \"string\",\n          \"description\": \"YouTube video description\"\n        },\n        \"tags\": {\n          \"type\": \"array\",\n          \"description\": \"YouTube tags\",\n          \"items\": {\n            \"type\": \"string\"\n          }\n        },\n        \"privacy\": {\n          \"type\": \"string\",\n          \"enum\": [\"private\", \"unlisted\", \"public\"],\n          \"description\": \"YouTube video privacy status\"\n        },\n        \"categoryId\": {\n          \"type\": \"string\",\n          \"description\": \"YouTube video category ID\"\n        }\n      },\n      \"required\": [\"enabled\", \"channelName\"]\n    },\n    \"channel_config\": {\n      \"type\": \"object\",\n      \"description\": \"Optional per-channel configuration (structure defined in code)\",\n      \"additionalProperties\": true\n    },\n    \"timestamp\": {\n      \"type\": \"string\",\n      \"description\": \"ISO timestamp when this config was generated\"\n    }\n  },\n  \"required\": [\n    \"format_type\",\n    \"target_language\",\n    \"title\",\n    \"time_context\",\n    \"topic_category\",\n    \"video_config\",\n    \"elevenlabs_config\"\n  ]\n}\n"
+      },
+      "id": "7f9d1b56-db43-447f-8123-58943892c68d",
+      "name": "Parse AI Output (Idea, Environment, Sound)",
+      "type": "@n8n/n8n-nodes-langchain.outputParserStructured",
+      "position": [
+        640,
+        1584
+      ],
+      "typeVersion": 1.2
+    },
+    {
+      "parameters": {
+        "model": {
+          "__rl": true,
+          "mode": "list",
+          "value": "gpt-4.1",
+          "cachedResultName": "gpt-4.1"
+        },
+        "options": {}
+      },
+      "id": "8b573dc0-4bc5-45b5-a303-d94523a7a2c7",
+      "name": "LLM: Draft Video Prompt Details (GPT-4.1)",
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
+      "position": [
+        -448,
+        1648
+      ],
+      "typeVersion": 1.2,
+      "credentials": {
+        "openAiApi": {
+          "id": "CjCNNGvIZ7HBlXWN",
+          "name": "OpenAi account"
+        }
+      }
+    },
+    {
+      "parameters": {},
+      "id": "11a05303-64de-4b63-8665-d70cb83bc1ed",
+      "name": "Tool: Refine and Validate Prompts1",
+      "type": "@n8n/n8n-nodes-langchain.toolThink",
+      "position": [
+        -272,
+        1648
+      ],
+      "typeVersion": 1
+    },
+    {
+      "parameters": {
+        "jsonSchemaExample": "{\n  \"Idea\": \"An obsidian rock being sliced with a shimmering knife\",\n  \"Environment\": \"Clean studio table, subtle light reflections\",\n  \"Sound\": \"Crisp slicing, deep grinding, and delicate crumbling\",\n  \"Scene 1\": \"Extreme macro shot: a razor-sharp, polished knife blade presses into the dark, granular surface of an obsidian rock, just beginning to indent.\",\n  \"Scene 2\": \"Close-up: fine, iridescent dust particles erupt from the point of contact as the blade cuts deeper into the obsidian, catching the studio light.\",\n  \"Scene 3\": \"Mid-shot: the knife, held perfectly steady, has formed a shallow, clean groove across the obsidian's shimmering surface, revealing a new, smooth texture.\"\n}"
+      },
+      "id": "3ef47a51-3428-4b8f-839d-9454e24a4877",
+      "name": "Parse Structured Video Prompt Output",
+      "type": "@n8n/n8n-nodes-langchain.outputParserStructured",
+      "position": [
+        -112,
+        1648
+      ],
+      "typeVersion": 1.2
+    },
+    {
+      "parameters": {
+        "promptType": "=define",
+        "text": "=You are a conversion model that transforms RL-optimized visual prompts into structured configs for:\n\n1) VEO3 image/video generation\n2) NANOBABANA narration/voice generation\n\nThese global context values are injected from the previous n8n node and MUST be preserved and propagated into the output:\n\nCATEGORY: {{ $('Duration & Scenes Adjuster').item.json.selected_category }}\nLANGUAGE: {{ $('Duration & Scenes Adjuster').item.json.target_language }}\nTIME CONTEXT:  {{ $('Duration & Scenes Adjuster').item.json.time_slot }}({{ $('Duration & Scenes Adjuster').item.json.hour }}시)\nFORMAT: {{ $('Duration & Scenes Adjuster').item.json.format_type }}\nSCENES_COUNT: {{ $('Duration & Scenes Adjuster').item.json.target_scenes_count }}\n\n\n\nAlways use these values as:\n- topic_category  = {{ $('Duration & Scenes Adjuster').item.json.selected_category }}\n- category        = {{ $('Duration & Scenes Adjuster').item.json.selected_category }}\n- target_language = {{ $('Duration & Scenes Adjuster').item.json.target_language }}\n- language        = {{ $('Duration & Scenes Adjuster').item.json.target_language }}\n- time_context    = {{ $('Duration & Scenes Adjuster').item.json.time_slot }}\n- format_type     = {{ $('Duration & Scenes Adjuster').item.json.format_type }}\n\n## INPUT FORMAT (USER MESSAGE)\n\nYou will receive a JSON array of RL results, for example:\n\n[\n  {\n    \"prompt\": {{ $json.prompt }},\n    \"combination_key\": {{ $json.combination_key }},\n    \"place\": \"{{ $json.place }}\",\n    \"verb\": \"{{ $json.verb }}\",\n    \"scenario\": \"{{ $json.scenario }}\",\n    \"estimated_reward\": {{ $json.estimated_reward }},\n    \"candidates_count\": {{ $json.candidates_count }}\n  }\n]\n\nEach item describes a possible visual/narrative concept.\n\nCRITICAL:  \n- The \"prompt\" field is the RL-optimized prompt and MUST be treated as ground truth.  \n- You MUST NOT rewrite, paraphrase, or semantically change this prompt text.  \n- Whenever you copy it, you MUST copy it **verbatim** (exactly the same characters).\n\nYou MUST preserve all fields from each RL item when you copy them into any \"source\" section, but you ARE allowed to reuse the same RL item across multiple blocks when needed.\n\n## OUTPUT FORMAT\n\nYou MUST output a single JSON object (NOT an array) with this structure:\n\n{\n  \"format_type\": \"{{ $('Duration & Scenes Adjuster').item.json.format_type }}\",\n  \"topic_category\": \"{{ $('Duration & Scenes Adjuster').item.json.selected_category }}\",\n  \"category\": \"{{ $('Duration & Scenes Adjuster').item.json.selected_category }}\",\n  \"target_language\": \"{{ $('Duration & Scenes Adjuster').item.json.target_language }}\",\n  \"language\": \"{{ $('Duration & Scenes Adjuster').item.json.target_language }}\",\n  \"time_context\": \"{{ $('Duration & Scenes Adjuster').item.json.time_slot }}\",\n  \"meta\": {\n    \"hour\": {{ $('Duration & Scenes Adjuster').item.json.hour }},\n    \"target_scenes_count\": {{ $('Duration & Scenes Adjuster').item.json.target_scenes_count }},\n    \"rl_items_count\": <actual_number_of_rl_items_you_detect_in_input>\n  },\n  \"blocks\": [\n    {\n      \"source\": {\n        \"prompt\": \"...\",\n        \"combination_key\": \"...\",\n        \"place\": \"...\",\n        \"verb\": \"...\",\n        \"scenario\": \"...\",\n        \"estimated_reward\": 0.0,\n        \"candidates_count\": 0\n      },\n      \"veo3\": {\n        \"image_prompt\": \"MUST BE EXACT COPY OF source.prompt\",\n        \"visual_style\": \"shot type, lens, movement, depth of field, framing\",\n        \"mood\": \"lighting + emotional tone\",\n        \"search_keywords\": [\"ENGLISH keyword 1\", \"ENGLISH keyword 2\", \"ENGLISH keyword 3\"]\n      },\n      \"nanobabana\": {\n        \"language\": \"{{ $('Duration & Scenes Adjuster').item.json.target_language }}\",\n        \"narration\": \"Detailed narration text with emotion markers, in the correct LANGUAGE\",\n        \"emotion_tag\": \"(excited | calm | tense | whispered | confident)\",\n        \"voice_settings\": {\n          \"speed\": 1.0,\n          \"energy\": 0.8,\n          \"tone\": \"bright\"\n        }\n      }\n    }\n    // You MUST create EXACTLY SCENES_COUNT blocks in total.\n  ]\n}\n\n### BLOCKS COUNT RULE\n\nLet:\n- N = {{ $('Duration & Scenes Adjuster').item.json.target_scenes_count }}   // desired number of scenes/blocks\n- M = number of RL items in the input array\n\nYou MUST always create EXACTLY N blocks in the \"blocks\" array, regardless of M.\n\n- If M >= N:\n  - Use the first N RL items as the primary \"source\" for blocks[0..N-1] in order.\n\n- If M < N (for example, M = 1 and N = 2 or more):\n  - STILL create N blocks.\n  - Treat the single RL prompt as ONE full story or concept and split it across multiple blocks **only at the narration/visual level**, NOT by rewriting the RL text.\n  - You may:\n    - Use the SAME RL prompt (exact text) as source.prompt in multiple blocks.\n    - Use the SAME RL prompt (exact text) as veo3.image_prompt in multiple blocks.\n  - You may conceptually think:\n    - Block 1: HOOK / establishing moment of that RL prompt (described in narration + visual_style).\n    - Middle blocks: VALUE / details / close-ups / explanation (using the same RL prompt).\n    - Final block: CTA / emotional punchline (still within the same world of the RL prompt).\n  - You are allowed to copy the same RL item into multiple \"source\" sections if needed.\n  - You are NOT allowed to change or partially edit the prompt text; always copy it exactly.\n\n### LANGUAGE RULE (for narration):\n\n- If LANGUAGE = \"korean\":\n  - nanobabana.language = \"korean\"\n  - narration text is in natural Korean, but emotion tags stay in English, e.g. \"(excited)\".\n- If LANGUAGE = \"english\":\n  - nanobabana.language = \"english\"\n  - narration text is in natural English.\n- You may adapt similarly for other languages if needed.\n\n### VEO3 FIELD RULES\n\nFor each \"veo3\" object:\n\n- \"image_prompt\":\n  - MUST be an **exact, verbatim copy** of the RL \"prompt\" used in this block.\n  - Concretely:\n    - veo3.image_prompt === source.prompt\n    - You are NOT allowed to:\n      - prepend \"Create a shot of ...\"\n      - append camera or lighting terms\n      - paraphrase, re-order, or partially edit the text\n    - You may only copy the string exactly as it appears in the RL input.\n  - If multiple blocks are based on the same RL item:\n    - All those blocks MUST have the exact same image_prompt text.\n\n- \"visual_style\":\n  - This is where you add all cinematography details (not in image_prompt):\n    - shot type: extreme close-up, wide shot, tracking shot, handheld, drone overhead, Dutch angle, etc.\n    - lens: 24mm wide-angle, 35mm, 50mm macro, 85mm portrait, 135mm telephoto, etc.\n    - movement: smooth pan, tracking forward, push-in, pull-out, slow tilt up, rack focus, whip pan, etc.\n    - depth of field: shallow depth of field, deep focus, soft bokeh in the background, etc.\n\n- \"mood\":\n  - Emotional + lighting description, e.g.:\n    - \"excited, vibrant neon aquarium lighting with high contrast and glowing reflections\".\n\n- \"search_keywords\":\n  - ENGLISH ONLY.\n  - MUST be suitable for Pexels.com search.\n  - Use concrete visual terms from \"place\" and \"prompt\":\n    - e.g. \"jellyfish\", \"aquarium\", \"underwater gallery\", \"neon lights\", \"colorful jellyfish\".\n  - Never include Korean, Japanese, or other non-English words here.\n\n### NANOBABANA FIELD RULES\n\nFor each \"nanobabana\" object:\n\n- \"narration\":\n  - Begin with an emotion tag in parentheses, e.g. \"(excited)\".\n  - Tone and content must match the \"scenario\" and the visual mood.\n  - Describe or react to the same scene as the RL prompt (which is used as image_prompt).\n  - Optimize for short-form video narration (YouTube Shorts / TikTok / Reels).\n  - You MAY split the RL story into different beats across multiple blocks **in narration only**, but you MUST NOT rewrite the original prompt text itself.\n\n- \"emotion_tag\":\n  - Map from \"scenario\" (case-insensitive):\n    - \"excited\"  → \"(excited)\"\n    - \"calm\"     → \"(calm)\"\n    - \"tense\"    → \"(tense)\"\n    - words like \"secret\", \"whisper\" → \"(whispered)\"\n    - default for unknown → \"(confident)\"\n\n- \"voice_settings\":\n  - Adjust \"energy\" based on scenario:\n    - excited → 0.8–1.0\n    - calm   → 0.4–0.6\n    - tense  → 0.7–0.85\n    - default → 0.7\n\n### MAPPING RULES FROM INPUT FIELDS\n\n- place:\n  - Use it to build environment description and search_keywords.\n  - Example:\n    - \"jellyfish gallery\" → aquarium, jellyfish, underwater gallery, glowing tanks, neon lights.\n\n- verb:\n  - Map to camera movement (for visual_style, NOT for changing image_prompt text):\n    - \"pan\"   → smooth horizontal tracking pan on gimbal.\n    - \"zoom\"  → slow push-in toward the main subject.\n    - \"track\" → tracking shot following the subject.\n    - \"hold\"  → static locked-off shot with subtle natural camera shake.\n\n- scenario:\n  - Map to emotional tone + lighting:\n    - \"excited\" → bright, vibrant, high energy, saturated colors.\n    - \"calm\"    → soft, gentle, low contrast, pastel or soft blue.\n    - \"tense\"   → high contrast, darker background, dramatic lighting.\n\n## STYLE AND OUTPUT CONSTRAINTS\n\n- ALWAYS output a SINGLE valid JSON object as described above.\n- NEVER output explanations, comments, or markdown.\n- Do NOT add extra top-level fields other than:\n  - format_type, topic_category, category, target_language, language, time_context, meta, blocks.\n- The number of items in \"blocks\" MUST equal SCENES_COUNT ({{ $('Duration & Scenes Adjuster').item.json.target_scenes_count }}), NOT the number of RL items in the input.\n- In every block:\n  - source.prompt MUST be an exact copy of the original RL prompt.\n  - veo3.image_prompt MUST be an exact copy of source.prompt.\n",
+        "hasOutputParser": true,
+        "options": {
+          "systemMessage": "=You are a conversion model that transforms RL-optimized visual prompts into FINAL short-form video configs that match a strict JSON schema.\n\nYour job in this node:\n\n- INPUT: RL-optimized items (prompt, combination_key, place, verb, scenario, etc.) + scene configuration.\n- OUTPUT: A SINGLE JSON OBJECT that strictly matches the required schema:\n  - Top level: format_type, topic_category, target_language, time_context, title, category, language, viral_potential, video_config, elevenlabs_config, youtube_upload\n  - PLUS EITHER:\n    - \"timeline\" with \"scenes\" array (if format_type = \"timeline\")\n    - OR \"storyboard\" array (if format_type = \"storyboard\")\n  - NEVER both at the same time.\n- You MUST NOT output any other top-level fields (NO \"meta\", NO \"blocks\", NO \"source\", etc.).\n\n================================================================\n0. GLOBAL CONTEXT FROM N8N (ALWAYS USE THESE VALUES)\n================================================================\n\nThese values are injected from the previous n8n node “Duration & Scenes Adjuster” and MUST be preserved and reflected in your output:\n\n- CATEGORY: {{ $('Duration & Scenes Adjuster').item.json.selected_category }}\n- LANGUAGE: {{ $('Duration & Scenes Adjuster').item.json.target_language }}\n- TIME CONTEXT: {{ $('Duration & Scenes Adjuster').item.json.time_slot }} ({{ $('Duration & Scenes Adjuster').item.json.hour }}시)\n- FORMAT: {{ $('Duration & Scenes Adjuster').item.json.format_type }}\n- target_scenes_count: {{ $('Duration & Scenes Adjuster').item.json.target_scenes_count }}\n- target_total_duration: {{ $('Duration & Scenes Adjuster').item.json.target_total_duration }}\n- individual_scene_durations: {{ $('Duration & Scenes Adjuster').item.json.individual_scene_durations }}\n\n(OPTIONAL YOUTUBE CONTEXT – adjust node/field names to your flow)\n- YOUTUBE_CHANNEL_NAME: {{ $('Duration & Scenes Adjuster').item.json.channel_type }}\n- YOUTUBE_UPLOAD_ENABLED: True\n\nAlways map them as follows in your final JSON:\n\n- \"format_type\": {{ $('Duration & Scenes Adjuster').item.json.format_type }}\n- \"topic_category\": {{ $('Duration & Scenes Adjuster').item.json.selected_category }}\n- \"category\": {{ $('Duration & Scenes Adjuster').item.json.selected_category }}\n- \"target_language\": {{ $('Duration & Scenes Adjuster').item.json.target_language }}\n- \"language\": {{ $('Duration & Scenes Adjuster').item.json.target_language }}\n- \"time_context\": {{ $('Duration & Scenes Adjuster').item.json.time_slot }}\n\nDO NOT invent or change these values. topic_category/category are metadata ONLY and MUST NOT force you to rewrite the RL story into a new domain.\n\n================================================================\n1. INPUT FORMAT (USER MESSAGE)\n================================================================\n\nThe USER message will contain:\n\n1) A JSON array named RL_RESULTS:\n   [\n     {\n       \"prompt\": \"...\",\n       \"combination_key\": \"...\",\n       \"place\": \"...\",\n       \"verb\": \"...\",\n       \"scenario\": \"...\",\n       \"estimated_reward\": 0.98,\n       \"candidates_count\": 75\n     },\n     ...\n   ]\n\n2) Scene configuration values:\n   - target_scenes_count (number)\n   - target_total_duration (number, seconds)\n   - individual_scene_durations (array of numbers, seconds)\n\nYou MUST read RL_RESULTS as the list of RL items and the scene configuration as the target structure you must strictly follow.\n\n================================================================\n1.1 SEMANTIC PRESERVATION (CRITICAL)\n================================================================\n\nThe RL \"prompt\" field is ALREADY an optimized visual-narrative description.\n\nYou MUST treat each RL prompt as GROUND TRUTH:\n\n- You MUST NOT change the core meaning or introduce new story concepts that are not in the RL fields (prompt, place, verb, scenario).\n- You MUST NOT introduce new domains like:\n  - study tips, productivity hacks, memory methods, marketing advice, self-help, etc.\n- You MUST NOT add new characters that do not exist in the RL prompt\n  (for example: students at a desk, office workers, influencers, \"you\", etc.)\n- You MAY enhance only at the CINEMATOGRAPHY and NARRATION STRUCTURE level:\n  - camera angle, lens type, depth of field, lighting style, movement,\n  - scene emphasis (which part of the RL prompt is highlighted in each scene),\n  - but the underlying scene content (who, where, what) must stay the same.\n- You MUST NOT paraphrase the RL prompt text inside image_prompt.\n  - You may only COPY exact substrings from the RL prompt (character-for-character).\n\nExample RL prompt:\n\n\"In a vibrant galaxy filled with swirling colors, the camera pans across sparkling stars and floating planets. Excited Disney princesses in shimmering gowns dance among the celestial wonders, their laughter echoing through the cosmos, as they embark on an adventurous journey through the stars.\"\n\nThen:\n- All scenes MUST stay inside that same galaxy with those princesses and stars.\n- You are NOT allowed to turn it into a \"Memory Palace study hack\" or show a student at a desk.\n- You MUST reuse that story, only splitting it into multiple scenes and describing cinematography details around it.\n\n================================================================\n2. DYNAMIC SCENE CONFIGURATION (FROM PREVIOUS NODE)\n================================================================\n\nYou also have these values:\n\n- target_scenes_count (N)\n- target_total_duration\n- individual_scene_durations (array of numbers, seconds)\n\nYou MUST obey all of the following:\n\n- Generate EXACTLY N scenes (for \"timeline\") or shots (for \"storyboard\").\n- For scene/shot index i (0-based):\n  - use individual_scene_durations[i] as the \"duration\" field.\n- The sum of all durations should approximately equal target_total_duration.\n- NEVER default to any fixed number of scenes. ALWAYS follow target_scenes_count.\n- If format_type = \"timeline\":\n  - number of items in timeline.scenes == target_scenes_count.\n- If format_type = \"storyboard\":\n  - number of items in storyboard == target_scenes_count.\n\n================================================================\n2.2 MAPPING RL RESULTS TO SCENES/SHOTS\n================================================================\n\nLet:\n- N = target_scenes_count\n- M = number of RL items in RL_RESULTS\n\nYou MUST always create exactly N scenes/shots, regardless of M.\n\n- If M >= N:\n  - You may map RL_RESULTS[0] → scene_1, RL_RESULTS[1] → scene_2, ..., up to N.\n  - Each scene/shot is primarily based on the corresponding RL item.\n\n- If M = 1 and N > 1 (for example, one RL prompt but two or more scenes):\n  - STILL create N scenes.\n  - You MUST derive ALL scenes from that ONE RL prompt WITHOUT changing its meaning.\n  - You MAY:\n    - focus each scene on a different part or aspect of the SAME RL story,\n    - change camera scale and angle (wide → medium → close-up),\n    - adjust which objects or actions are emphasized per scene.\n  - You MUST NOT:\n    - introduce new story topics, characters, or domains that are not implied by that RL prompt.\n\n================================================================\n2.3 SENTENCE-BASED SPLITTING WHEN M = 1 AND N = 2\n================================================================\n\nIf there is exactly ONE RL prompt (M = 1) and target_scenes_count = 2,\nand RL_RESULTS[0].prompt contains at least two sentences separated by a period \".\" then:\n\n- Let the full RL prompt be P.\n- Split P at the FIRST period \".\":\n\n  - S1 = the first sentence, from the start of P up to and including the first \".\"\n  - S2 = the remaining part of P after that first \".\", trimmed of leading spaces\n\nYou MUST map them as:\n\n- Scene 1 (timeline.scenes[0] or storyboard[0]):\n  - Core story beat = S1\n- Scene 2 (timeline.scenes[1] or storyboard[1]):\n  - Core story beat = S2\n\nFor each scene in this M=1, N=2 case:\n\n- Scene 1 text / narration:\n  - MUST start with an emotion tag, then include S1 VERBATIM before any extra commentary.\n  - Example (for timeline.text):\n    - \"(excited) In a vibrant galaxy filled with swirling colors, the camera pans across sparkling stars and floating planets. — [then you may add cinematography commentary].\"\n\n- Scene 2 text / narration:\n  - MUST start with an emotion tag, then include S2 VERBATIM before any extra commentary.\n  - Example:\n    - \"(excited) Excited Disney princesses in shimmering gowns dance among the celestial wonders, their laughter echoing through the cosmos, as they embark on an adventurous journey through the stars. — [then cinematography commentary].\"\n\n- Scene 1 image_prompt:\n  - MUST be EXACTLY S1, copied verbatim (no extra words, no paraphrasing).\n\n- Scene 2 image_prompt:\n  - MUST be EXACTLY S2, copied verbatim.\n\nIMPORTANT:\n\n- In this case, you MUST NOT set both scenes' image_prompt to the FULL P.\n- scene_1.image_prompt and scene_2.image_prompt MUST be DIFFERENT:\n  - scene_1.image_prompt = first sentence (S1)\n  - scene_2.image_prompt = second sentence (S2)\n- You are NOT allowed to paraphrase S1 or S2.\n  - You can only copy them exactly as substrings of P.\n- Cinematography details (shot type, lens, camera movement, depth of field, lighting) MUST go into:\n  - text / audio.narration\n  - visual_style\n  - mood\n  NOT into image_prompt.\n\n================================================================\n3. TOP-LEVEL JSON (SCHEMA-COMPATIBLE)\n================================================================\n\nYour final JSON MUST have:\n\n- \"format_type\": \"{{ $('Duration & Scenes Adjuster').item.json.format_type }}\"\n- \"topic_category\": \"{{ $('Duration & Scenes Adjuster').item.json.selected_category }}\"\n- \"target_language\": \"{{ $('Duration & Scenes Adjuster').item.json.target_language }}\"\n- \"time_context\": \"{{ $('Duration & Scenes Adjuster').item.json.time_slot }}\"\n- \"title\": an engaging, viral-worthy title that is clearly inspired by the RL prompt story (NOT a generic label).\n- \"category\": same as topic_category.\n- \"language\": same as target_language.\n- \"viral_potential\": a number between 1 and 10 (integer or float).\n- \"video_config\": object (details below).\n- \"elevenlabs_config\": object (details below).\n- \"youtube_upload\": object (YouTube upload config, see Section 11).\n- EITHER:\n  - \"timeline\": { \"scenes\": [...] }  WHEN format_type = \"timeline\"\n  - OR \"storyboard\": [ ... ]        WHEN format_type = \"storyboard\"\n\nYou MUST NOT output any other top-level keys.\n\n================================================================\n3.1 TITLE GENERATION RULES (TOP-LEVEL \"title\")\n================================================================\n\nYou MUST always generate a strong, click-worthy title based on the RL prompt content:\n\n- The title MUST reflect the **same world and story** as the RL prompt:\n  - Use key visual concepts (place, characters, vibe) from RL prompt.\n  - Example for the galaxy–princess prompt:\n    - \"Cosmic Waltz: Princesses Dancing Through the Stars\"\n    - \"Galaxy of Gowns: Dancing Among the Stars\"\n- You MUST NOT introduce a new domain:\n  - ❌ No: \"Study Hack Using a Galaxy Memory Palace\"\n  - ✅ Yes: \"Jellyfish Dreamscape: A Princess Lost in the Aquarium\"\n- Language:\n  - If target_language = \"korean\":\n    - Title SHOULD be in natural Korean, you may optionally mix 1–2 English words if stylistically natural (e.g. \"갤럭시 프린세스: 별 사이를 춤추다\").\n  - If target_language = \"english\":\n    - Title MUST be in English.\n  - For other languages, adapt title to that language, staying faithful to the RL story.\n- Style:\n  - 5–80 characters is preferred.\n  - Short, punchy, emotionally strong.\n  - You MAY use \":\" or \"—\" to separate hook + detail.\n  - Avoid hashtags and emojis in the title field.\n\nThe top-level \"title\" MUST be AI-generated from the RL prompt, not a static or generic string.\n\n================================================================\n4. video_config (REQUIRED)\n================================================================\n\n\"video_config\" MUST follow the schema:\n\n- orientation: \"portrait\" or \"landscape\"\n  - For vertical short-form, DEFAULT to \"portrait\".\n- musicVolume: \"low\", \"medium\", or \"high\"\n  - DEFAULT: \"medium\".\n- subtitlePosition: \"top\", \"center\", or \"bottom\"\n  - DEFAULT: \"bottom\".\n- quality: \"standard\", \"high\", or \"premium\"\n  - DEFAULT: \"high\".\n\nExample:\n\n\"video_config\": {\n  \"orientation\": \"portrait\",\n  \"musicVolume\": \"medium\",\n  \"subtitlePosition\": \"bottom\",\n  \"quality\": \"high\"\n}\n\n================================================================\n5. elevenlabs_config (REQUIRED)\n================================================================\n\n\"elevenlabs_config\" MUST follow the schema:\n\n- model_id: one of:\n  - \"eleven_multilingual_v2\"\n  - \"eleven_flash_v2_5\"\n  - \"eleven_turbo_v2_5\"\n  (DEFAULT: \"eleven_multilingual_v2\")\n- voice_settings: object with:\n  - stability: 0–1 (DEFAULT ~0.7)\n  - similarity_boost: 0–1 (DEFAULT ~0.8)\n  - speed: 0.5–2.0 (DEFAULT ~1.0)\n  - style: \"default\", \"narration\", or \"chat\" (DEFAULT: \"narration\")\n- output_format: \"mp3\", \"pcm\", or \"opus\" (DEFAULT: \"mp3\")\n\nExample:\n\n\"elevenlabs_config\": {\n  \"model_id\": \"eleven_multilingual_v2\",\n  \"voice_settings\": {\n    \"stability\": 0.7,\n    \"similarity_boost\": 0.8,\n    \"speed\": 1.0,\n    \"style\": \"narration\"\n  },\n  \"output_format\": \"mp3\"\n}\n\n================================================================\n6. FORMAT = \"timeline\" CASE\n================================================================\n\nIf format_type = \"timeline\":\n\n- You MUST output a \"timeline\" object with a \"scenes\" array.\n- You MUST NOT output \"storyboard\".\n\nSchema:\n\n\"timeline\": {\n  \"scenes\": [\n    {\n      \"id\": \"scene_1\",\n      \"duration\": <number>,\n      \"text\": \"<string>\",\n      \"search_keywords\": [\"...\", \"...\"],\n      \"visual_style\": \"<string>\",\n      \"mood\": \"<string>\",\n      \"image_prompt\": \"<string>\"\n    },\n    ...\n  ]\n}\n\nConstraints:\n\n- timeline.scenes.length == target_scenes_count.\n- For scene i (0-based):\n  - id: \"scene_(i+1)\" (e.g. \"scene_1\", \"scene_2\", ...).\n  - duration: individual_scene_durations[i].\n\n- text:\n  - Narration in the TARGET LANGUAGE.\n  - MUST include an emotion tag at the start in English, e.g. \"(excited)\", \"(confident)\", \"(whispered)\", \"(urgent)\", \"(calm)\", \"(tense)\".\n  - MUST clearly describe the same story beat as the RL prompt segment used for that scene (S1, S2, or appropriate substring).\n  - MUST contain that RL substring (S1/S2) verbatim if you are in the M=1, N=2 sentence-splitting case.\n  - You MAY add cinematography commentary after the RL sentence.\n\n- search_keywords:\n  - Array of at least 2 English keywords (minItems=2).\n  - Must be realistic Pexels search terms.\n  - Derive from RL fields (place, scenario, prompt content).\n\n- visual_style:\n  - Detailed cinematography description, using RL \"verb\" + \"place\" as hints:\n    - Shot type: extreme close-up, wide shot, tracking shot, handheld, drone overhead, Dutch angle, etc.\n    - Lens: 24mm wide-angle, 35mm, 50mm, 85mm portrait, 135mm telephoto.\n    - Movement: pan, tracking forward, push-in, pull-out, rack focus, tilt, etc.\n    - Depth of field: shallow DoF, deep focus, soft bokeh.\n\n- mood:\n  - Lighting + emotional tone derived from \"scenario\":\n    - \"excited\": bright, vibrant, high energy, saturated colors.\n    - \"calm\": soft, gentle, low contrast, pastel or soft blue.\n    - \"tense\": high contrast, darker background, dramatic lighting.\n\n- image_prompt (SENTENCE-LEVEL, VERBATIM SUBSTRING RULE):\n  - For each scene, you MUST build image_prompt ONLY by copying an exact, contiguous substring from the corresponding RL prompt.\n  - In the M=1, N=2 case:\n    - scene_1.image_prompt = S1 (first sentence), verbatim.\n    - scene_2.image_prompt = S2 (second sentence), verbatim.\n  - You are NOT allowed to:\n    - add \"Create a shot of ...\" or any extra words,\n    - mix multiple parts of the RL prompt in a different order,\n    - paraphrase or translate the RL text in image_prompt.\n\n================================================================\n7. FORMAT = \"storyboard\" CASE\n================================================================\n\nIf format_type = \"storyboard\":\n\n- You MUST output a \"storyboard\" array.\n- You MUST NOT output \"timeline\".\n\nSchema:\n\n\"storyboard\": [\n  {\n    \"shot\": 1,\n    \"duration\": <number>,\n    \"audio\": {\n      \"narration\": \"<string>\"\n    },\n    \"search_keywords\": [\"...\", \"...\"],\n    \"visual_style\": \"<string>\",\n    \"mood\": \"<string>\",\n    \"image_prompt\": \"<string>\"\n  },\n  ...\n]\n\nConstraints:\n\n- storyboard.length == target_scenes_count.\n- For shot i (0-based):\n  - shot: i + 1 (1, 2, 3, ...).\n  - duration: individual_scene_durations[i].\n\n- audio.narration:\n  - Detailed narration in TARGET LANGUAGE.\n  - MUST begin with an emotion tag in English, e.g. \"(excited)\", \"(calm)\", \"(tense)\", \"(whispered)\", \"(confident)\".\n  - MUST match the RL prompt segment used for that shot and MUST NOT introduce new story domains.\n  - In the M=1, N=2 sentence-splitting case:\n    - Shot 1 narration MUST contain S1 verbatim.\n    - Shot 2 narration MUST contain S2 verbatim.\n  - Short-form optimized for YouTube Shorts / TikTok / Reels.\n\n- search_keywords, visual_style, mood, image_prompt:\n  - Same rules as in the \"timeline\" case.\n\n================================================================\n8. LANGUAGE BEHAVIOR\n================================================================\n\n- If target_language = \"korean\":\n  - Narration (text / audio.narration) MUST be in natural Korean.\n  - Emotion tags remain in English at the beginning, e.g. \"(excited)\".\n- If target_language = \"english\":\n  - Narration is in natural English.\n- For other languages (japanese, chinese, spanish), you may adapt narration accordingly.\n\nRegardless of language:\n\n- search_keywords MUST ALWAYS be English.\n- image_prompt MUST ALWAYS be built from the original RL prompt text, by copying exact substrings (such as individual sentences), even if it contains mixed languages.\n\n================================================================\n9. CINEMATOGRAPHY & VIRAL STRUCTURE (LIGHTWEIGHT)\n================================================================\n\nYou may lightly optimize for Hook → Value → CTA ONLY INSIDE the RL story:\n\n- First scene/shot:\n  - Emphasize the visual hook already present in the RL prompt (e.g. swirling galaxy colors, glowing jellyfish, etc.).\n- Middle scenes/shots:\n  - Emphasize details and character actions already present in the RL prompt.\n- Final scene/shot:\n  - Emphasize the emotional or adventurous peak that the RL prompt suggests.\n- DO NOT introduce totally new topics (like studying, productivity, self-help, office work, etc.) for the sake of virality.\n\nAll cinematography optimization (hook/value/CTA pacing, shot scale changes, movement) MUST stay within the world and events described by the RL prompt.\n\n================================================================\n10. HARD OUTPUT CONSTRAINTS\n================================================================\n\n- You MUST output ONLY a single valid JSON object.\n- Do NOT output markdown, comments, or explanations.\n- Do NOT include extra top-level keys other than:\n  - format_type, topic_category, target_language, time_context,\n    timeline, storyboard, title, category, language,\n    viral_potential, video_config, elevenlabs_config, youtube_upload.\n- Exactly one of \"timeline\" or \"storyboard\" must be present, according to format_type.\n- Ensure every field complies with the types and enums from the JSON schema.\n- For EVERY scene/shot in the M=1, N=2 case:\n  - scene_1.image_prompt MUST be the FIRST sentence of the RL prompt.\n  - scene_2.image_prompt MUST be the SECOND sentence of the RL prompt.\n\n================================================================\n11. YOUTUBE UPLOAD CONFIG (youtube_upload)\n================================================================\n\nAt the top level, you MUST always include a \"youtube_upload\" object with the following structure:\n\n\"youtube_upload\": {\n  \"enabled\": <boolean>,\n  \"channelName\": \"<string>\",\n  \"title\": \"<string>\",\n  \"description\": \"<string>\",\n  \"tags\": [\"tag1\", \"tag2\", ...],\n  \"privacy\": \"private\" | \"unlisted\" | \"public\",\n  \"categoryId\": \"<string>\"\n}\n\nRules:\n\n- enabled:\n  - If YOUTUBE_UPLOAD_ENABLED is provided, use that value.\n  - Otherwise, default to true.\n\n- channelName:\n  - If YOUTUBE_CHANNEL_NAME is provided from n8n, use it exactly.\n  - Otherwise, you may use a placeholder like \"default-channel\" (but prefer the provided value).\n\n- title:\n  - By default, you MUST set youtube_upload.title to be EXACTLY the same as the top-level \"title\".\n  - You MUST NOT use \"{{auto}}\" here; you are responsible for generating the human-readable title from the RL prompt.\n  - This ensures the upload title is directly based on the RL story and optimized title you created.\n\n- description:\n  - A short, natural-language summary of the video in the TARGET LANGUAGE.\n  - May reuse or paraphrase the top-level title and main idea.\n  - 1–3 sentences is enough.\n\n- tags:\n  - Array of 3–8 short English tags.\n  - Derive from topic_category, time_context, and main visual concepts.\n  - Example: [\"jellyfish\", \"aquarium\", \"fantasy princess\", \"shorts\"].\n\n- privacy:\n  - public.\n\n- categoryId:\n  - You may set a reasonable default such as \"22\" (People & Blogs) or \"27\" (Education),\n    depending on topic_category.\n"
+        }
+      },
+      "id": "757f5279-97c7-4248-8fbe-2ea685cb77de",
+      "name": "Generate Creative Video Idea",
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "position": [
+        576,
+        1344
+      ],
+      "typeVersion": 1.9
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "=Give me 3 video prompts based on the previous idea\n\nUse the Think tool to review your output",
+        "hasOutputParser": true,
+        "options": {
+          "systemMessage": "=Role: You are a prompt-generation AI specializing in cinematic, ASMR-style video prompts. Your task is to generate a multi-scene video sequence that vividly shows a sharp knife actively cutting through a specific object in a clean, high-detail setting.\n\nYour writing must follow this style:\n\nSharp, precise cinematic realism.\n\nMacro-level detail with tight focus on the blade interacting with the object.\n\nThe knife must always be in motion — slicing, splitting, or gliding through the material. Never idle or static.\n\nCamera terms are allowed (e.g. macro view, tight angle, over-the-blade shot).\n\nEach scene must contain all of the following, expressed through detailed visual language:\n\n✅ The main object or subject (from the Idea)\n\n✅ The cutting environment or surface (from the Environment)\n\n✅ The texture, structure, and behavior of the material as it’s being cut\n\n✅ A visible, sharp blade actively cutting\n\nDescriptions should show:\n\nThe physical makeup of the material — is it translucent, brittle, dense, reflective, granular, fibrous, layered, or fluid-filled?\n\nHow the material responds to the blade — resistance, cracking, tearing, smooth separation, tension, vibration.\n\nThe interaction between the blade and the surface — light reflection, buildup of particles, contact points, residue or dust.\n\nAny ASMR-relevant sensory cues like particle release, shimmer, or subtle movement, but always shown visually — not narrated.\n\nTone:\n\nClean, clinical, visual.\n\nNo poetic metaphors, emotion, or storytelling.\n\nAvoid fantasy or surreal imagery.\n\nAll description must feel physically grounded and logically accurate.\n\nLength:\n\nEach scene must be between 1,000 and 2,000 characters.\n\nNo shallow or repetitive scenes — each must be immersive, descriptive, and specific.\n\nEach scene should explore a distinct phase of the cutting process, a different camera perspective, or a new behavior of the material under the blade.\n\nInputs:\n\nIdea: \"{{ $json.idea }}\"\nEnvironment: \"{{ $json.environment_prompt }}\"\nSound: \"{{ $json.sound_prompt }}\"\n\nFormat:\n\nIdea: \"...\"\nEnvironment: \"...\"\nSound: \"...\"\n\nScene 1: \"...\"\nScene 2: \"...\"\nScene 3: \"...\"\nScene 4: \"...\"\nScene 5: \"...\"\nScene 6: \"...\"\nScene 7: \"...\"\nScene 8: \"...\"\nScene 9: \"...\"\nScene 10: \"...\"\nScene 11: \"...\"\nScene 12: \"...\"\nScene 13: \"...\"\n\n"
+        }
+      },
+      "id": "031f33bb-f701-4833-8d04-c3b420cccf2c",
+      "name": "Generate Detailed Video Prompts",
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "position": [
+        -352,
+        1360
+      ],
+      "typeVersion": 1.9
+    },
+    {
+      "parameters": {
+        "model": {
+          "__rl": true,
+          "mode": "list",
+          "value": "gpt-5-mini",
+          "cachedResultName": "gpt-5-mini"
+        },
+        "options": {}
+      },
+      "id": "2dedb6b8-e722-451c-baff-c75a8e5087ac",
+      "name": "LLM: Generate Raw Idea (GPT-5)",
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
+      "position": [
+        304,
+        1584
+      ],
+      "typeVersion": 1.2,
+      "notesInFlow": false,
+      "credentials": {
+        "openAiApi": {
+          "id": "CjCNNGvIZ7HBlXWN",
+          "name": "OpenAi account"
+        }
+      },
+      "notes": "https://withpersona.com/verify?inquiry-id=inq_q5ELExhPZmvk65aoXDviWfY1btGy"
+    },
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "field": "hours",
+              "hoursInterval": 6
+            }
+          ]
+        }
+      },
+      "id": "6488652a-280d-4297-9417-aaa9e9ecb9e5",
+      "name": "Schedule Trigger",
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "position": [
+        -496,
+        2048
+      ],
+      "typeVersion": 1.2
+    },
+    {
+      "parameters": {
+        "jsCode": "// Process Timeline Data - RAW 데이터 그대로 전달 (변형 없음)\nconst items = $input.all();\n\nreturn items.map(item => {\n  const output = item.json.output;\n\n  // RAW 데이터 그대로 전달 - 변형 없음\n  return {\n    json: output // 원본 데이터 그대로\n  };\n}).filter(item => item !== null);"
+      },
+      "id": "a2cd2400-779a-40f6-8d29-5ab58e13692c",
+      "name": "Process Timeline Data",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        784,
+        2016
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "append",
+        "documentId": {
+          "__rl": true,
+          "value": "={{ $json.timeline_id }}",
+          "mode": "id"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "Sheet1",
+          "mode": "name"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "youtube_upload": "={{ $('Process Timeline Data').item.json.youtube_upload }}",
+            "elevenlabs_config": "={{ $('Process Timeline Data').item.json.elevenlabs_config }}",
+            "timeline_id": "={{ $json.timeline_id }}",
+            "topic_category": "={{ $('Process Timeline Data').item.json.topic_category }}",
+            "target_language": "={{ $('Process Timeline Data').item.json.target_language }}",
+            "time_context": "={{ $('Process Timeline Data').item.json.time_context }}",
+            "timeline": "={{ $('Process Timeline Data').item.json.timeline }}",
+            "title": "={{ $('Process Timeline Data').item.json.title }}",
+            "category": "={{ $('Process Timeline Data').item.json.category }}",
+            "language": "={{ $('Process Timeline Data').item.json.language }}",
+            "viral_potential": "={{ $('Process Timeline Data').item.json.viral_potential }}",
+            "video_config": "={{ $('Process Timeline Data').item.json.video_config }}",
+            "format_type": "={{ $('Process Timeline Data').item.json.format_type }}",
+            "timestamp": "={{ $('Schedule Trigger').item.json.timestamp }}",
+            "channel_config": "={{ $('Channel Mapper').item.json.channel_config }}"
+          },
+          "matchingColumns": [],
+          "schema": [
+            {
+              "id": "timeline_id",
+              "displayName": "timeline_id",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "timestamp",
+              "displayName": "timestamp",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "format_type",
+              "displayName": "format_type",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "topic_category",
+              "displayName": "topic_category",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "target_language",
+              "displayName": "target_language",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "time_context",
+              "displayName": "time_context",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "timeline",
+              "displayName": "timeline",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "storyboard",
+              "displayName": "storyboard",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "title",
+              "displayName": "title",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "category",
+              "displayName": "category",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "language",
+              "displayName": "language",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "viral_potential",
+              "displayName": "viral_potential",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "video_config",
+              "displayName": "video_config",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "elevenlabs_config",
+              "displayName": "elevenlabs_config",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "channel_config",
+              "displayName": "channel_config",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "youtube_upload",
+              "displayName": "youtube_upload",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "id": "30e18e68-eefd-47b2-8f2c-ea40ad253540",
+      "name": "Save Timeline to Sheets",
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4,
+      "position": [
+        960,
+        2416
+      ],
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "EyQK232PQ4Y8a1QC",
+          "name": "Google Sheets account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "dc516a37-f141-40aa-af61-c7c755eb3ac2",
+              "leftValue": "={{ $json.output.format_type }}",
+              "rightValue": "time",
+              "operator": {
+                "type": "string",
+                "operation": "startsWith"
+              }
+            },
+            {
+              "id": "f0cc8e8c-ed91-4ed2-b71f-5429035031a9",
+              "leftValue": "={{ $json.output.format_type }}",
+              "rightValue": "=story",
+              "operator": {
+                "type": "string",
+                "operation": "startsWith"
+              }
+            }
+          ],
+          "combinator": "or"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        784,
+        1856
+      ],
+      "id": "ff97c743-f4d8-4e78-8b80-2045cd6d2b97",
+      "name": "If"
+    },
+    {
+      "parameters": {
+        "url": "https://www.googleapis.com/drive/v3/files",
+        "authentication": "predefinedCredentialType",
+        "nodeCredentialType": "googleOAuth2Api",
+        "sendQuery": true,
+        "queryParameters": {
+          "parameters": [
+            {
+              "name": "q",
+              "value": "'1pzDC6egIcEA23vzfEd-FnoVL0_v8p-Vs' in parents and (mimeType='application/vnd.google-apps.spreadsheet' or mimeType='application/vnd.openxmlformats-officedocument.spreadsheetml.sheet' or mimeType='application/vnd.ms-excel') and trashed=false"
+            },
+            {
+              "name": "fields",
+              "value": "files(id, name, mimeType, parents)"
+            },
+            {
+              "name": "supportsAllDrives",
+              "value": "true"
+            },
+            {
+              "name": "includeItemsFromAllDrives",
+              "value": "true"
+            }
+          ]
+        },
+        "options": {
+          "response": {
+            "response": {
+              "responseFormat": "json"
+            }
+          }
+        }
+      },
+      "id": "34c118ea-1154-4354-80f9-f83ea6199b56",
+      "name": "드라이브에서 가져와 시트를2",
+      "type": "n8n-nodes-base.httpRequest",
+      "position": [
+        784,
+        2208
+      ],
+      "typeVersion": 4.2,
+      "credentials": {
+        "googleOAuth2Api": {
+          "id": "UQpYcPclaX3WnAcN",
+          "name": "Google account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsCode": "// Combined Node - Timeline ID 추출 + RAW 데이터 처리                                       \n  const input = $input.all()[0].json;\n  const rows = $input.all();\n  const targetData = $('Random').first().json;\n\n  // Timeline ID 추출                                                                         \n  const TimelineFile = input.files?.find(f => f.name === \"Timeline\");\n  const timeline_id = TimelineFile?.id;\n\n  if (rows.length === 0) {\n    return [{ json: { error: \"No data received\" } }];\n  }\n\n  // 랜덤 선택                                                                                \n  const randomIndex = Math.floor(Math.random() * rows.length);\n  const selectedRow = rows[randomIndex].json;\n\n  // RAW 데이터 추출                                                                          \n  let rawData;\n  try {\n    if (selectedRow.raw_data) {\n      rawData = JSON.parse(selectedRow.raw_data);\n    } else {\n      rawData = selectedRow;\n    }\n  } catch (error) {\n    rawData = selectedRow;\n  }\n\n  // Timeline ID와 채널 메타데이터 추가                                                       \n  const payload = {\n    ...rawData, // 원본 데이터 그대로                                                         \n    timeline_id: timeline_id, // Timeline ID 추가                                             \n    channel_config: {\n      voice_preference: targetData.voice_preference,\n      veo3_priority: targetData.veo3_priority,\n      channel_type: targetData.channel_type,\n      channel_name: targetData.channel_name\n    },\n    webhook_url: \"http://172.27.86.48:5678/webhook/video-complete\",          timestamp: new Date().toISOString()\n  };\n\n  console.log(`API 전달: ${payload.title} (${payload.format_type}) - Timeline ID:             \n  ${timeline_id}`);\n\n  return [{ json: payload }];"
+      },
+      "id": "50a53e91-4e56-4729-8b44-a3b6aae9bd57",
+      "name": "Code2",
+      "type": "n8n-nodes-base.code",
+      "position": [
+        784,
+        2416
+      ],
+      "typeVersion": 2
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://short-video-maker-550996044521.us-central1.run.app/api/video/nano-banana/to-veo3",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{ $json }}",
+        "options": {}
+      },
+      "id": "b301520e-53b6-4469-9d29-28f960216d8e",
+      "name": "Create AI Video",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 3,
+      "position": [
+        1136,
+        2416
+      ]
+    },
+    {
+      "parameters": {
+        "content": "\n  ✅ 추천 순서\n\n  1. 먼저 로컬로 테스트: http://localhost:3133/api/short-video                       \n  2. 안 되면 WSL IP: http://172.27.86.48:3133/api/short-video \n\n\n\n  PORT: 3124 ✅ (현재 실행 중)\n\n  비디오 생성 엔드포인트:\n\n  PEXELS 모드 (비디오 검색):\n\n  POST http://localhost:3124/api/video/pexels\n\n  VEO3 모드 (NanoBanana → VEO3):\n\n  POST http://localhost:3124/api/video/veo3\n\n  기타 모드:\n\n  POST http://localhost:3124/api/video/nano-banana  (이미지만)\n  POST http://localhost:3124/api/video/gpt-image    (GPT 이미지만)\n  POST http://localhost:3124/api/video/veo3-gpt     (GPT → VEO3)\n\n  N8N에서 사용할 엔드포인트:\n\n  PEXELS 비디오:\n  URL: http://localhost:3124/api/video/pexels\n  Method: POST\n  Body: {\n    \"scenes\": [\n      {\n        \"text\": \"아름다운 일몰\",\n        \"searchTerms\": [\"sunset\", \"ocean\"]\n      }\n    ]\n  }\n\n  VEO3 비디오:\n  URL: http://localhost:3124/api/video/veo3\n  Method: POST\n  Body: {\n    \"scenes\": [\n      {\n        \"text\": \"아름다운 일몰\",\n        \"motionPrompt\": \"바다 위로 떠오르는 황금빛 태양\"\n      }\n    ]\n  }\n",
+        "height": 980,
+        "width": 452
+      },
+      "id": "ceaa9685-2b7e-4f27-9fee-24184646a4fc",
+      "name": "Sticky Note12",
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        1408,
+        1280
+      ],
+      "typeVersion": 1
+    },
+    {
+      "parameters": {
+        "content": "영어로 번역",
+        "height": 80,
+        "width": 400,
+        "color": 3
+      },
+      "id": "fdec062c-b2fd-4998-bb93-441203829f5b",
+      "name": "Sticky Note1",
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        -400,
+        1248
+      ],
+      "typeVersion": 1
+    },
+    {
+      "parameters": {
+        "values": {
+          "string": [
+            {
+              "name": "channel_type",
+              "value": "why_cat"
+            },
+            {
+              "name": "available_channels",
+              "value": "why_cat"
+            },
+            {
+              "name": "instruction",
+              "value": "위 channel_type 값을 원하는 채널로 변경하세요"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "e192680c-b428-4f80-b189-106d9f0659fa",
+      "name": "Channel Data",
+      "type": "n8n-nodes-base.set",
+      "position": [
+        192,
+        2048
+      ],
+      "typeVersion": 1
+    },
+    {
+      "parameters": {
+        "jsCode": "// Channel Data에서 설정 받아서 매핑\nconst input = $input.first().json;\nconst channelType = input.channel_type || \"korean_business\";\n\nconsole.log(`선택된 채널 타입: ${channelType}`);\n\nconst channelSettings = {\n  \"ATT\": {\n    language: \"english\", \n    voice: \"pNInz6obpgDQGcFmaJgB\",\n    style: \"professional\",\n    name: \"ATT\",\n    veo3Priority: true,\n    description: \"CGXR\"\n  }\n};\n\nconst selectedChannel = channelSettings[channelType];\n\nif (!selectedChannel) {\n  throw new Error(`Unknown channel type: ${channelType}`);\n}\n\nreturn [{\n  json: {\n    channel_type: channelType,\n    channel_config: selectedChannel,\n    target_language: selectedChannel.language,\n    voice_preference: selectedChannel.voice,\n    content_style: selectedChannel.style,\n    channel_name: selectedChannel.name,\n    veo3_priority: selectedChannel.veo3Priority,\n    description: selectedChannel.description,\n    timestamp: new Date().toISOString()\n  }\n}];"
+      },
+      "id": "4ebfad90-fb94-479c-9631-fc6ad01688da",
+      "name": "Channel Mapper",
+      "type": "n8n-nodes-base.code",
+      "position": [
+        336,
+        2048
+      ],
+      "typeVersion": 1
+    },
+    {
+      "parameters": {
+        "jsCode": "// 시간대 기반 스마트 카테고리 선택 + 채널 설정 적용\nconst hour = new Date().getHours();\nconst day = new Date().getDay();\n\n// Channel Mapper에서 설정 받아오기\nconst channelData = $('Channel Mapper').first().json;\nconst targetLanguage = channelData.target_language;\nconst voicePreference = channelData.voice_preference;\nconst contentStyle = channelData.content_style;\nconst channelName = channelData.channel_name;\nconst veo3Priority = channelData.veo3_priority;\nconst channelType = channelData.channel_type;\n\nconsole.log('선택된 채널: ' + channelName + ' (' + targetLanguage + ')');\n\n// 수익성 검증된 카테고리 (시간대별)\nconst timeCategories = {\n  \"morning\": [\"Business Success (비즈니스 성공)\", \"Productivity Tips (생산성 팁)\"],\n  \"afternoon\": [\"Life Hacks (생활 꿀팁)\", \"Health Tips (건강 정보)\"],\n  \"evening\": [\"Wellness (웰빙)\", \"Relationships (인간관계)\"],\n  \"night\": [\"Science Facts (과학 상식)\", \"Learning Methods (학습법)\"]\n};\n\n// 시간대 결정\nlet timeSlot;\nif (hour >= 6 && hour < 12) timeSlot = \"morning\";\nelse if (hour >= 12 && hour < 18) timeSlot = \"afternoon\";\nelse if (hour >= 18 && hour < 22) timeSlot = \"evening\";\nelse timeSlot = \"night\";\n\n// 주말 보정\nif (day === 0 || day === 6) {\n  timeSlot = \"afternoon\"; // 주말엔 라이프스타일 중심\n}\n\nconst availableCategories = timeCategories[timeSlot];\nconst selectedCategory = availableCategories[Math.floor(Math.random() * availableCategories.length)];\n\n// 콘텐츠 형식 랜덤 선택 (timeline vs storyboard)\nconst formatTypes = [\"timeline\"];\n// const formatTypes = [\"timeline\", \"storyboard\"];\n\nconst selectedFormat = formatTypes[Math.floor(Math.random() * formatTypes.length)];\n\nconsole.log('선택된 형식: ' + selectedFormat + ', 카테고리: ' + selectedCategory);\n\nreturn [{\n  json: {\n    format_type: selectedFormat,\n    selected_category: selectedCategory,\n    target_language: targetLanguage,\n    voice_preference: voicePreference,\n    content_style: contentStyle,\n    channel_name: channelName,\n    channel_type: channelType,\n    veo3_priority: veo3Priority,\n    time_slot: timeSlot,\n    hour: hour,\n    is_weekend: day === 0 || day === 6,\n    optimization_hint: timeSlot + '_' + targetLanguage + '_' + contentStyle + '_' + selectedFormat,\n    timestamp: new Date().toISOString()\n  }\n}];"
+      },
+      "id": "cefbf537-c9af-4ed3-8874-d7cb43cd3b66",
+      "name": "Random",
+      "type": "n8n-nodes-base.code",
+      "position": [
+        480,
+        2048
+      ],
+      "typeVersion": 2
+    },
+    {
+      "parameters": {
+        "jsCode": "// Scene Config Generator - LLM 입력 전 설정 생성 + 강화된 디버깅\nconst input = $input.first().json;\n\n// 🎛️ 사용자 조정 가능한 설정 (여기서 쉽게 수정 가능)\nconst USER_CONFIG = {\n  // 기본 설정\n  target_duration: 20,        // 원하는 총 길이 (초)\n  scenes_count: 2,           // 원하는 장면 수 (3-7)\n  \n  // VEO 제약사항\n  veo2_duration_range: [5, 8],     // VEO 2 지원 범위\n  veo3_duration_options: [4, 6, 8], // VEO 3 지원 옵션\n  force_veo3_compliance: true,     // VEO3 제약 강제 적용\n  \n  // 품질 설정\n  min_scene_duration: 2,     // 최소 장면 길이\n  prefer_even_distribution: true, // 균등 분배 선호\n  \n  // 채널별 오버라이드 (선택사항)\n  channel_overrides: {\n    'korean_business': { scenes_count: 3, target_duration: 15 },\n    'english_global': { scenes_count: 6, target_duration: 30 },\n    'japanese_premium': { scenes_count: 4, target_duration: 24 },\n    'chinese_volume': { scenes_count: 5, target_duration: 25 },\n    'spanish_latino': { scenes_count: 5, target_duration: 25 }\n  }\n};\n\n// 🔧 Helper Functions\nfunction adjustDurationForVeo(duration, forceVeo3 = true) {\n  if (forceVeo3) {\n    // VEO3: 4, 6, 8초만 지원\n    if (duration <= 4) return 4;\n    if (duration <= 6) return 6;\n    return 8;\n  } else {\n    // VEO2: 5-8초 지원\n    return Math.min(Math.max(duration, 5), 8);\n  }\n}\n\nfunction generateOptimalDurations(sceneCount, totalDuration, config) {\n  const avgDuration = totalDuration / sceneCount;\n  const durations = [];\n  \n  for (let i = 0; i < sceneCount; i++) {\n    let duration = avgDuration;\n    \n    // VEO 제약사항 적용\n    duration = adjustDurationForVeo(duration, config.force_veo3_compliance);\n    durations.push(duration);\n  }\n  \n  // 총 길이 맞추기 위한 미세 조정\n  const totalGenerated = durations.reduce((sum, d) => sum + d, 0);\n  if (totalGenerated !== totalDuration) {\n    // 첫 번째 씬에 차이를 반영 (VEO 제약 내에서)\n    const diff = totalDuration - totalGenerated;\n    const adjustedFirst = durations[0] + diff;\n    durations[0] = adjustDurationForVeo(adjustedFirst, config.force_veo3_compliance);\n  }\n  \n  return durations;\n}\n\n// 🚀 Main Processing\ntry {\n  // 🔍 DEBUGGING: 입력 데이터 확인\n  console.log('=== SCENE CONFIG GENERATOR DEBUG ===');\n  console.log('1. Input received:', JSON.stringify(input, null, 2));\n  \n  // Random 노드에서 채널 설정 받아오기\n  const channelType = input.channel_type || 'korean_business';\n  console.log('2. Channel type detected:', channelType);\n  \n  // 채널별 설정 오버라이드 적용\n  const config = channelType && USER_CONFIG.channel_overrides[channelType] \n    ? { ...USER_CONFIG, ...USER_CONFIG.channel_overrides[channelType] }\n    : USER_CONFIG;\n  \n  console.log('3. Applied config:', JSON.stringify(config, null, 2));\n  \n  // 최적 duration 배열 생성\n  const optimalDurations = generateOptimalDurations(\n    config.scenes_count, \n    config.target_duration, \n    config\n  );\n  \n  console.log('4. Generated durations:', optimalDurations);\n  console.log('5. Total duration check:', optimalDurations.reduce((a,b) => a+b, 0));\n  \n  // LLM에 전달할 설정 생성\n  const sceneConfig = {\n    // Random 노드 데이터 유지\n    ...input,\n    \n    // 새로운 씬 설정 추가\n    target_scenes_count: config.scenes_count,\n    target_total_duration: config.target_duration,\n    individual_scene_durations: optimalDurations,\n    veo3_compliance: config.force_veo3_compliance,\n    \n    // LLM 프롬프트용 지시사항\n    llm_instructions: {\n      scenes_instruction: `Generate exactly ${config.scenes_count} scenes/shots`,\n      duration_instruction: `Each scene duration: ${optimalDurations.join('s, ')}s respectively`,\n      total_duration_instruction: `Total video duration: ${config.target_duration} seconds`,\n      format_instruction: input.format_type === 'timeline' ? 'Use timeline format' : 'Use storyboard format'\n    },\n    \n    // 메타데이터\n    config_generated_at: new Date().toISOString(),\n    user_config_applied: config,\n    debug_info: {\n      original_channel: channelType,\n      scenes_changed_from_default: config.scenes_count !== USER_CONFIG.scenes_count,\n      duration_changed_from_default: config.target_duration !== USER_CONFIG.target_duration\n    }\n  };\n  \n  console.log('6. ✅ FINAL OUTPUT TO LLM:');\n  console.log('   - Scenes:', config.scenes_count);\n  console.log('   - Total duration:', config.target_duration);\n  console.log('   - Individual durations:', optimalDurations.join(', '));\n  console.log('   - Channel:', channelType);\n  console.log('=== END DEBUG ===');\n  \n  return [{ json: sceneConfig }];\n  \n} catch (error) {\n  console.error('❌ Error generating scene config:', error);\n  // 에러 시 기본 설정으로 폴백\n  return [{ \n    json: {\n      ...input,\n      target_scenes_count: 3,\n      target_total_duration: 15,\n      individual_scene_durations: [6, 6, 4],\n      error: error.message,\n      fallback_applied: true\n    }\n  }];\n}"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        112,
+        1344
+      ],
+      "id": "e1ca2928-48b8-415b-bd66-03b578fc896e",
+      "name": "Duration & Scenes Adjuster"
+    },
+    {
+      "parameters": {
+        "content": "논문?",
+        "height": 80,
+        "width": 400,
+        "color": 3
+      },
+      "id": "fffa1006-85b2-4094-b7f0-246a795c5230",
+      "name": "Sticky Note4",
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        192,
+        1888
+      ],
+      "typeVersion": 1
+    },
+    {
+      "parameters": {
+        "url": "https://hfbpo-api-7qtnitbuvq-du.a.run.app/generate",
+        "sendQuery": true,
+        "specifyQuery": "json",
+        "jsonQuery": "{\"topic\": \"디즈니공주\"}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        272,
+        1344
+      ],
+      "id": "df2250d3-d598-4623-ae5e-a1713ab1408c",
+      "name": "HTTP Request"
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "Tool: Inject Creative Perspective (Idea)": {
+      "ai_tool": [
+        [
+          {
+            "node": "Generate Creative Video Idea",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Parse AI Output (Idea, Environment, Sound)": {
+      "ai_outputParser": [
+        [
+          {
+            "node": "Generate Creative Video Idea",
+            "type": "ai_outputParser",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "LLM: Draft Video Prompt Details (GPT-4.1)": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "Generate Detailed Video Prompts",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Tool: Refine and Validate Prompts1": {
+      "ai_tool": [
+        [
+          {
+            "node": "Generate Detailed Video Prompts",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Parse Structured Video Prompt Output": {
+      "ai_outputParser": [
+        [
+          {
+            "node": "Generate Detailed Video Prompts",
+            "type": "ai_outputParser",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Duration & Scenes Adjuster": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Generate Creative Video Idea": {
+      "main": [
+        [
+          {
+            "node": "If",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "LLM: Generate Raw Idea (GPT-5)": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "Generate Creative Video Idea",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Schedule Trigger": {
+      "main": [
+        [
+          {
+            "node": "Channel Data",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Process Timeline Data": {
+      "main": [
+        [
+          {
+            "node": "드라이브에서 가져와 시트를2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If": {
+      "main": [
+        [
+          {
+            "node": "Process Timeline Data",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "드라이브에서 가져와 시트를2": {
+      "main": [
+        [
+          {
+            "node": "Code2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code2": {
+      "main": [
+        [
+          {
+            "node": "Save Timeline to Sheets",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Save Timeline to Sheets": {
+      "main": [
+        [
+          {
+            "node": "Create AI Video",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Channel Data": {
+      "main": [
+        [
+          {
+            "node": "Channel Mapper",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Channel Mapper": {
+      "main": [
+        [
+          {
+            "node": "Random",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Random": {
+      "main": [
+        [
+          {
+            "node": "Duration & Scenes Adjuster",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTTP Request": {
+      "main": [
+        [
+          {
+            "node": "Generate Creative Video Idea",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "callerPolicy": "workflowsFromSameOwner",
+    "executionOrder": "v0",
+    "availableInMCP": false
+  },
+  "versionId": "d0a7df00-07eb-418b-9c71-dada45ef439a",
+  "meta": {
+    "templateId": "ready-to-run-ai-workflow-v4",
+    "templateCredsSetupCompleted": true,
+    "instanceId": "d105d4e28b988c4bc7d26a6fe3e7f180d4497fcb93f4ef8935efa4aade43f6b8"
+  },
+  "id": "SZ5kWMftjHAeAQWb",
+  "tags": []
+}

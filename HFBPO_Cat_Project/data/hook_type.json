@@ -1,0 +1,52 @@
+{
+  "name": "hook_type",
+  "description": "첫 씬 훅 타입 - CTR 향상 + 첫 3초 retention 목표",
+  "modifiers": {
+    "shock_reveal": {
+      "idx": 0,
+      "name_ko": "충격 표정",
+      "description": "충격적 표정/상황으로 시작",
+      "example_scene": "Kami 눈이 휘둥그레, 입이 떡 벌어진 표정",
+      "expected_effect": "높은 CTR",
+      "camera_suggestion": "extreme close-up on face",
+      "prior": {"alpha": 2, "beta": 1}
+    },
+    "curiosity_gap": {
+      "idx": 1,
+      "name_ko": "궁금증 유발",
+      "description": "\"이게 뭐야?\" 궁금증 유발",
+      "example_scene": "이상한 물건 발견, 의문의 소리",
+      "expected_effect": "재생 유지",
+      "camera_suggestion": "medium shot with mysterious object",
+      "prior": {"alpha": 2, "beta": 1}
+    },
+    "action_mid": {
+      "idx": 2,
+      "name_ko": "액션 중간",
+      "description": "액션 중간부터 시작 (in medias res)",
+      "example_scene": "도망치는 중, 쫓기는 중",
+      "expected_effect": "즉각 몰입",
+      "camera_suggestion": "dynamic tracking shot",
+      "prior": {"alpha": 1, "beta": 1}
+    },
+    "cute_trap": {
+      "idx": 3,
+      "name_ko": "귀여움 낚시",
+      "description": "극도의 귀여움으로 시선 끌기",
+      "example_scene": "졸린 고양이, 하품하는 모습",
+      "expected_effect": "공유 증가",
+      "camera_suggestion": "soft focus close-up",
+      "prior": {"alpha": 2, "beta": 1}
+    },
+    "dramatic_zoom": {
+      "idx": 4,
+      "name_ko": "드라마틱 줌",
+      "description": "드라마틱 클로즈업으로 감정 연결",
+      "example_scene": "표정 확대, 눈동자 클로즈업",
+      "expected_effect": "감정 연결",
+      "camera_suggestion": "slow zoom into eyes",
+      "prior": {"alpha": 1, "beta": 1}
+    }
+  },
+  "total_count": 5
+}

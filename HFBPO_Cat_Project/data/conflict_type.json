@@ -1,0 +1,67 @@
+{
+  "name": "conflict_type",
+  "description": "갈등 패턴 - Engagement 향상 + 스토리 공감 목표",
+  "modifiers": {
+    "kami_forgets": {
+      "idx": 0,
+      "name_ko": "까미 깜빡함",
+      "description": "Kami가 중요한 것을 깜빡함",
+      "kami_role": "실수 주인공 (guilty, apologetic)",
+      "dalgi_role": "한숨 (disappointed but understanding)",
+      "expected_effect": "공감",
+      "story_beat": "setup → mistake revealed → reaction",
+      "prior": {"alpha": 2, "beta": 1}
+    },
+    "dalgi_revenge": {
+      "idx": 1,
+      "name_ko": "딸기 복수",
+      "description": "Dalgi가 Kami에게 복수",
+      "kami_role": "피해자 (shocked, helpless)",
+      "dalgi_role": "복수 주인공 (satisfied, smug)",
+      "expected_effect": "카타르시스",
+      "story_beat": "past wrong → revenge plan → execution",
+      "prior": {"alpha": 1, "beta": 1}
+    },
+    "couple_battle": {
+      "idx": 2,
+      "name_ko": "커플 대결",
+      "description": "둘이 서로 대결하는 상황",
+      "kami_role": "고집 (stubborn, competitive)",
+      "dalgi_role": "고집 (stubborn, competitive)",
+      "expected_effect": "갈등 재미",
+      "story_beat": "disagreement → escalation → standoff",
+      "prior": {"alpha": 1, "beta": 1}
+    },
+    "prank_backfire": {
+      "idx": 3,
+      "name_ko": "장난 역풍",
+      "description": "장난이 역풍을 맞는 상황",
+      "kami_role": "장난꾸러기 (mischievous → regretful)",
+      "dalgi_role": "피해자 → 반격 (victim → victor)",
+      "expected_effect": "반전",
+      "story_beat": "prank setup → execution → backfire",
+      "prior": {"alpha": 2, "beta": 1}
+    },
+    "jealousy_spiral": {
+      "idx": 4,
+      "name_ko": "질투 전개",
+      "description": "질투심이 점점 커지는 상황",
+      "kami_role": "질투 (jealous, sulking)",
+      "dalgi_role": "당황 (confused, trying to explain)",
+      "expected_effect": "드라마",
+      "story_beat": "trigger → jealousy grows → confrontation",
+      "prior": {"alpha": 1, "beta": 1}
+    },
+    "misunderstanding": {
+      "idx": 5,
+      "name_ko": "오해 상황",
+      "description": "오해로 인한 갈등",
+      "kami_role": "오해 받음 (wrongly accused, frustrated)",
+      "dalgi_role": "오해 함 (suspicious, accusatory)",
+      "expected_effect": "관계 공감",
+      "story_beat": "misinterpretation → accusation → clarification attempt",
+      "prior": {"alpha": 1, "beta": 1}
+    }
+  },
+  "total_count": 6
+}

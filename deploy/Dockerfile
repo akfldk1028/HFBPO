@@ -10,6 +10,9 @@ RUN pip install --no-cache-dir -r requirements.txt
 COPY src/ ./src/
 COPY data/graph_output/ ./data/graph_output/
 
+# CatProject 복사
+COPY HFBPO_Cat_Project/ ./HFBPO_Cat_Project/
+
 # __init__.py 생성 (패키지 인식용)
 RUN touch src/__init__.py src/api/__init__.py src/api/DK/__init__.py \
     src/core/__init__.py src/generators/__init__.py src/rapo/__init__.py

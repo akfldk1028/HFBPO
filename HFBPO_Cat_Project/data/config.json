@@ -1,0 +1,84 @@
+{
+  "project": "CatProject",
+  "channel": "why_cat (InkMilk)",
+  "character_profile": "cat-couple",
+  "characters": ["kami", "dalgi"],
+
+  "normalization": {
+    "retention_rate": {"min": 0.30, "max": 0.90, "description": "시청 유지율 30%~90%"},
+    "ctr": {"min": 0.02, "max": 0.15, "description": "클릭률 2%~15%"},
+    "engagement_rate": {"min": 0.03, "max": 0.15, "description": "참여율 3%~15%"},
+    "share_rate": {"min": 0.001, "max": 0.02, "description": "공유율 0.1%~2%"},
+    "subscribers_gained": {"min": 0, "max": 50, "description": "구독자 증가 0~50명"}
+  },
+
+  "reward_weights": {
+    "phase_a_early": {
+      "description": "초기 단계 (구독자 < 1000) - 구독자 성장 집중",
+      "subscriber_threshold": 1000,
+      "weights": {
+        "retention": 0.20,
+        "ctr": 0.05,
+        "engagement": 0.15,
+        "share": 0.25,
+        "growth": 0.35
+      }
+    },
+    "phase_b_growth": {
+      "description": "성장 단계 (1000 < 구독자 < 100000) - 바이럴 집중",
+      "subscriber_threshold": 100000,
+      "weights": {
+        "retention": 0.30,
+        "ctr": 0.10,
+        "engagement": 0.20,
+        "share": 0.25,
+        "growth": 0.15
+      }
+    },
+    "phase_c_stable": {
+      "description": "안정 단계 (구독자 > 100000) - 수익 최적화",
+      "subscriber_threshold": null,
+      "weights": {
+        "retention": 0.35,
+        "ctr": 0.25,
+        "engagement": 0.20,
+        "share": 0.15,
+        "growth": 0.05
+      }
+    }
+  },
+
+  "multi_horizon_reward": {
+    "enabled": true,
+    "weights": {
+      "6h": 0.20,
+      "24h": 0.40,
+      "72h": 0.40
+    },
+    "description": "다중 시점 보상 - 바이럴 잠재력 반영"
+  },
+
+  "exploration_strategy": {
+    "initial_random_trials": 30,
+    "factored_trials_start": 31,
+    "factored_trials_end": 60,
+    "exploitation_start": 61,
+    "exploration_rate_after": 0.10,
+    "description": "하이브리드 탐색: 30회 랜덤 → 30회 Factored → Thompson Sampling"
+  },
+
+  "gpt_settings": {
+    "model": "gpt-4o",
+    "temperature": 0.4,
+    "use_seed": true,
+    "seed_method": "hash_combination_key",
+    "description": "GPT 출력 분산 제어를 위한 설정"
+  },
+
+  "veo_settings": {
+    "duration_per_scene": 8,
+    "total_scenes": 3,
+    "use_frame_interpolation": true,
+    "description": "VEO 3.1 설정 - 8초 씬, First+Last Frame"
+  }
+}
